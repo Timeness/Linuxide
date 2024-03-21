@@ -1,5 +1,6 @@
 import os
 import sys
+import Config
 import datetime
 import traceback
 from io import BytesIO, StringIO
@@ -9,7 +10,8 @@ from inspect import getfullargspec
 from pyrogram.types import Message
 from pyrogram import Client, filters
 from pyrogram.errors import MessageTooLong
-from App import mongo as Database, app, Config
+from Linux import App as app
+from Graph import mongo as Database
 from asyncio import create_subprocess_shell, subprocess
 
 # || ᴇxᴇᴄ ᴛᴇʀᴍɪɴᴀʟ sʏsᴛᴇᴍ ғᴜɴᴄᴛɪᴏɴ ʙᴀsᴇᴅ ᴘʏʀᴏɢʀᴀᴍ
