@@ -3,6 +3,7 @@ import asyncio
 import pymongo
 from pyrogram import Client
 from os import environ as env
+from Packages import ALL_MODULES
 from importlib import import_module
 
 class Config():
