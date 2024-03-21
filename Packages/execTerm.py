@@ -21,20 +21,20 @@ def ReplyCheck(message: Message):
         reply_id = message.id
     return reply_id
 
-async def aexec(code, app, msg, sticker, reply, data):
+async def aexec(code, app, msg, sticker, reply, data, chat, user):
     sys.tracebacklimit = 0
     exec( 
-        "async def __aexec(app, msg, sticker, reply, data): " 
+        "async def __aexec(app, msg, sticker, reply, data, chat, user): " 
         + "".join(f"\n {a}" for a in code.split("\n")) 
     ) 
-    return await locals()["__aexec"](app, msg, sticker, reply, data) 
+    return await locals()["__aexec"](app, msg, sticker, reply, data, chat, user) 
 
 async def editReply(msg: Message, **kwargs): 
     func = msg.edit_text if msg.from_user.is_self else msg.reply 
     spec = getfullargspec(func.__wrapped__).args 
     await func(**{k: v for k, v in kwargs.items() if k in spec})
 
-async def pyro_Excute_Func(app:app, msg:Message, db:Database):
+async def pyro_Excute_Func(app:app, msg:Message, db:Database, chat, user):
     if len(msg.command) < 2: 
         return await editReply(msg, text="**ɪɴᴘᴜᴛ ɴᴏᴛ ғᴏᴜɴᴅ ɢɪᴠᴇ ᴍᴇ ᴀ ᴄᴏᴅᴇ ᴛᴏ ᴇxᴄᴜᴛᴇ !**")
     source = await msg.reply("**ᴘʀᴏᴄᴇssɪɴɢ.**")
@@ -56,7 +56,7 @@ async def pyro_Excute_Func(app:app, msg:Message, db:Database):
     try:
         sticker = reply_by.sticker.file_id if hasattr(reply_by, 'sticker') and reply_by.sticker else None
         reply = msg.reply_to_message or None
-        await aexec(command, app, msg, sticker, reply, db) 
+        await aexec(command, app, msg, sticker, reply, db, chat, user) 
     except Exception: 
         exc = traceback.format_exc()
     stdout = redirected_output.getvalue() 
@@ -99,8 +99,10 @@ async def pyro_Excute_Func(app:app, msg:Message, db:Database):
 
 @app.on_message(filters.command(["py", "exec"], [".", "/", "?", "!", "$"]) & filters.user(Config.SUDOERS))
 @app.on_edited_message(filters.command(["py", "exec"], [".", "/", "?", "!", "$"]) & filters.user(Config.SUDOERS))
-async def exec_Pyro(app:app, msg:Message, chat:Chat, user:User):
-    await pyro_Excute_Func(app, msg, chat, user, Database)
+async def exec_Pyro(app:app, msg:Message):
+    Chat = msg.chat
+    User = msg.from_user
+    await pyro_Excute_Func(app, msg, Database, Chat, User)
 
 
 @app.on_message(filters.command("sh", [".", "/", "?", "!", "$"]) & filters.user(Config.SUDOERS))
