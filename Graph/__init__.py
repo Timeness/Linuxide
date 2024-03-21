@@ -32,6 +32,8 @@ except PyMongoError:
    pass
 
 Rose = db["Soumo"]["Rose"]
+usersdb = mongo["SoumoDB"]["users"]
+groupdb = mongo["SoumoDB"]["group"]
 
 async def Escove(Chat:int, Message:int) -> None:
     await Rose.update_one({"Soumo": "Soumo"}, {"$set": {"chat_id": Chat, "message_id": Message}}, upsert=True)
@@ -47,3 +49,33 @@ async def Restart(msg:Message) -> None:
     if msg:
         await Escove(msg.chat.id, msg.id)
     execvp(executable, [executable, "-m", "Linux"])
+
+def db_users():
+    return len(list(usersdb.find({})))
+
+def db_groups():
+    return len(list(groupsdb.find({})))
+
+def check_user(user):
+    users = usersdb.find_one({"user_id" : int(user)})
+    if not users:
+        return False
+    return True
+
+def check_group(group):
+    groups = groupdb.find_one({"chat_id" : int(group)})
+    if not groups:
+        return False
+    return True
+
+def add_user(user):
+    checkdb = check_user(user)
+    if checkdb:
+        return
+    return usersdb.insert_one({"user_id": int(user)})
+
+def add_group(group):
+    checkdb = check_group(group)
+    if checkdb:
+        return
+    return groupdb.insert_one({"chat_id": int(group)})
