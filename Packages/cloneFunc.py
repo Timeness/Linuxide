@@ -2,7 +2,7 @@ from pyrogram import filters
 from App import app as Soumo
 from pyrogram.types import Message
 from pyrogram import Client as PyroGram
-from pyromod.listen.listen import ListenerTimeout
+from asyncio.exceptions import TimeoutError
 SUPPORT = "-1001535967539"
 
 async def CancFunc(message):
@@ -27,7 +27,7 @@ async def cloneFuncs(Soumo:Soumo, message:Message):
             filters=filters.text,
             timeout=60,
         )
-    except ListenerTimeout:
+    except TimeoutError:
         return await Soumo.send_message(
             message.from_user.id,
             "**» Sᴏʀʀʏ ᴛɪᴍᴇᴅ ʟɪᴍɪᴛ ʀᴇᴀᴄʜᴇᴅ ᴏғ 60 sᴇᴄᴏɴᴅs.**"
@@ -51,7 +51,7 @@ async def cloneFuncs(Soumo:Soumo, message:Message):
             filters=filters.text,
             timeout=60,
         )
-    except ListenerTimeout:
+    except TimeoutError:
         return await Soumo.send_message(
             message.from_user.id,
             "**» Sᴏʀʀʏ ᴛɪᴍᴇᴅ ʟɪᴍɪᴛ ʀᴇᴀᴄʜᴇᴅ ᴏғ 60 sᴇᴄᴏɴᴅs.**"
@@ -74,7 +74,7 @@ async def cloneFuncs(Soumo:Soumo, message:Message):
             filters=filters.text,
             timeout=60,
         )
-    except ListenerTimeout:
+    except TimeoutError:
         return await Soumo.send_message(
             message.from_user.id,
             "**» Sᴏʀʀʏ ᴛɪᴍᴇᴅ ʟɪᴍɪᴛ ʀᴇᴀᴄʜᴇᴅ ᴏғ 60 sᴇᴄᴏɴᴅs.**"
