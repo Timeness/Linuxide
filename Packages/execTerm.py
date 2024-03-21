@@ -2,7 +2,6 @@ import os
 import sys
 import datetime
 import traceback
-from Config import Config
 from io import BytesIO, StringIO
 from subprocess import getoutput
 from traceback import format_exc
