@@ -9,6 +9,7 @@ from os import execvp
 from Linux import LOGGER
 from sys import executable
 from pymongo import MongoClient
+from pyrogram.types import Message
 from pymongo.errors import InvalidURI
 from pymongo.errors import PyMongoError
 from motor.motor_asyncio import AsyncIOMotorClient as MongoDB
