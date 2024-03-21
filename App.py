@@ -7,7 +7,7 @@ class Config():
     API_ID = int(env.get("API_ID", "26850449"))
     SELF_WORKERS = int(env.get("SELF_WORKERS", "4"))
     API_HASH = str(env.get("API_HASH", "72a730c380e68095a8549ad7341b0608"))
-    BOT_TOKEN = str(env.get("BOT_TOKEN", ""))
+    BOT_TOKEN = str(env.get("BOT_TOKEN", "6486942911:AAFsg5NLnpHeosWQNcFz2NtvhtUF1y311Sw"))
     SUDOERS = list(map(int, env.get("SUDOERS", "6517565595 5896960462 5220416927").split()))
     MONGODB = str(env.get("MONGODB", "mongodb+srv://MrsMayura:Mayura6969@cluster0.5gpauan.mongodb.net/?retryWrites=true&w=majority"))
 
