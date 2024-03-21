@@ -4,7 +4,7 @@ pyrogram
 tgcrypto 
 python-dotenv
 cachetools
-hydrogram
+gunicorn
 Flask
 aiohttp
 pyromod
