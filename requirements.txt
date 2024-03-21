@@ -1,3 +1,4 @@
+motor
 pymongo
 requests
 pyrogram
@@ -7,4 +8,8 @@ cachetools
 gunicorn
 Flask
 aiohttp
-pyromod
+hydrogram
+python-telegram-bot
+apscheduler
+telegraph
+asyncio
