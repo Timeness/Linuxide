@@ -1,0 +1,10 @@
+pymongo
+requests
+pyrogram
+tgcrypto 
+python-dotenv
+cachetools
+hydrogram
+Flask
+aiohttp
+pyromod
