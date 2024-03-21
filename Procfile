@@ -1,1 +1,1 @@
-worker: python3 App.py
+worker: python3 -m Linux
