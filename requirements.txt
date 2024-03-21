@@ -12,4 +12,4 @@ hydrogram
 python-telegram-bot
 apscheduler
 telegraph
-asyncio
+shortuuid
