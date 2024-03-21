@@ -1,5 +1,5 @@
 from pyrogram import filters
-from App import app as Soumo
+from Linux import App as Soumo
 from pyrogram.types import Message
 from pyrogram import Client as PyroGram
 from asyncio.exceptions import TimeoutError
