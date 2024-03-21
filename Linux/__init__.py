@@ -66,9 +66,9 @@ class Hydro():
     )
 Sakura = Hydro.Soumo
 
-PyTGram = Application.builder().token(Confif.BOT_TOKEN).build()
-Func = PyTGram.add_handler
+pyApp = Application.builder().token(Confif.BOT_TOKEN).build()
+Func = pyApp.add_handler
 
 asyncio.get_event_loop().run_until_complete(
-    asyncio.gather(PyTGram.bot.initialize())
+    asyncio.gather(pyApp.bot.initialize())
 )
