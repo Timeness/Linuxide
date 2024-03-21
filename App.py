@@ -1,7 +1,9 @@
 import os
+import asyncio
 import pymongo
 from pyrogram import Client
 from os import environ as env
+from importlib import import_module
 
 class Config():
     API_ID = int(env.get("API_ID", "26850449"))
@@ -58,5 +60,13 @@ class Pyro():
     )
 app = Pyro.Soumo
 
+Loop = asyncio.get_event_loop()
+
+async def addPackages():
+    for mods in ALL_MODULES:
+        import_module("Packages." + mods)
+    print("» Dᴇᴘʟᴏʏ Sᴜᴄᴄᴇssғᴜʟʟʏ !")
+
 if __name__ == "__main__":
     app.run()
+    Loop.run_until_complete(addPackages())
