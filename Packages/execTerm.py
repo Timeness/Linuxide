@@ -34,7 +34,7 @@ async def editReply(msg: Message, **kwargs):
     spec = getfullargspec(func.__wrapped__).args 
     await func(**{k: v for k, v in kwargs.items() if k in spec})
 
-async def pyro_Excute_Func(app:App, msg:Message, db:Database):
+async def pyro_Excute_Func(app:app, msg:Message, db:Database):
     if len(msg.command) < 2: 
         return await editReply(msg, text="**ɪɴᴘᴜᴛ ɴᴏᴛ ғᴏᴜɴᴅ ɢɪᴠᴇ ᴍᴇ ᴀ ᴄᴏᴅᴇ ᴛᴏ ᴇxᴄᴜᴛᴇ !**")
     source = await msg.reply("**ᴘʀᴏᴄᴇssɪɴɢ.**")
