@@ -1,11 +1,11 @@
 import sys
 import Config
 import asyncio
-import traceback
-from pyrogram import idle
 from telegram import Update
 from Graph import Clean_Stage
 from importlib import import_module
+from pyrogram import idle as PyGram
+from hydrogram import idle as HyGram
 from Linux.Modules import ALL_MODULES
 from telegram.ext import ContextTypes
 from Linux import App, Sakura, LOGGER, pyApp
@@ -32,7 +32,8 @@ async def addPackages():
     except Exception:
         LOGGER.info("» Bᴏᴛ ʜᴀs ғᴀɪʟᴇᴅ ᴛᴏ ᴀᴄᴄᴇss ᴛʜᴇ sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ. ᴍᴀᴋᴇ sᴜʀᴇ ᴛʜᴀᴛ ʏᴏᴜ ʜᴀᴠᴇ ᴀᴅᴅᴇᴅ ʏᴏᴜʀ ʙᴏᴛ ᴛᴏ ʏᴏᴜʀ sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ.")
       
-    await idle()
+    await PyGram()
+    await HyGram()
     await App.send_message(SUPPORT, "**🚧 Mᴀɪɴᴛᴇɴᴀɴᴄᴇ Mᴏᴅᴇ Oɴ ! Lɪɴᴜxɪᴅᴇ Is Nᴏᴡ Dᴇᴀᴅ.**")
     LOGGER.info("» Gᴏᴏᴅ Bʏᴇ Sᴛᴏᴘᴘɪɴɢ Lɪɴᴜxɪᴅᴇ !")
 
