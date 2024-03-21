@@ -66,7 +66,7 @@ class Hydro():
     )
 Sakura = Hydro.Soumo
 
-pyApp = Application.builder().token(Confif.BOT_TOKEN).build()
+pyApp = Application.builder().token(Config.BOT_TOKEN).build()
 Func = pyApp.add_handler
 
 asyncio.get_event_loop().run_until_complete(
