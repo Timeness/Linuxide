@@ -3,15 +3,15 @@ import sys
 import Config
 import datetime
 import traceback
+from Linux import App as app
 from io import BytesIO, StringIO
 from subprocess import getoutput
 from traceback import format_exc
 from inspect import getfullargspec
 from pyrogram.types import Message
+from Graph import mongo as Database
 from pyrogram import Client, filters
 from pyrogram.errors import MessageTooLong
-from Linux import App as app
-from Graph import mongo as Database
 from asyncio import create_subprocess_shell, subprocess
 
 # || ᴇxᴇᴄ ᴛᴇʀᴍɪɴᴀʟ sʏsᴛᴇᴍ ғᴜɴᴄᴛɪᴏɴ ʙᴀsᴇᴅ ᴘʏʀᴏɢʀᴀᴍ
