@@ -3,7 +3,6 @@ import asyncio
 import pymongo
 from pyrogram import Client
 from os import environ as env
-from Packages import ALL_MODULES
 from importlib import import_module
 
 class Config():
@@ -64,6 +63,7 @@ app = Pyro.Soumo
 Loop = asyncio.get_event_loop()
 
 async def addPackages():
+    from Packages import ALL_MODULES
     for mods in ALL_MODULES:
         import_module("Packages." + mods)
     print("» Dᴇᴘʟᴏʏ Sᴜᴄᴄᴇssғᴜʟʟʏ !")
