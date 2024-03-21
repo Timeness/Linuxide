@@ -2,6 +2,7 @@ from pyrogram import filters
 from Linux import App as Soumo
 from pyrogram.types import Message
 from pyrogram import Client as PyroGram
+from pyrogram.enums import ChatType
 from asyncio.exceptions import TimeoutError
 SUPPORT = "-1001535967539"
 
