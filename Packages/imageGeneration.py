@@ -6,7 +6,6 @@ from pyrogram import filters
 from pyrogram.types import Message
 SESSION_HEADERS = {"Host": "lexica.qewertyy.me"}
 
-
 class AsyncClient:
     def __init__(self):
         self.url = "https://lexica.qewertyy.me"
