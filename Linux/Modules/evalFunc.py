@@ -47,8 +47,8 @@ async def eos_Send(msg, **kwargs):
     spec = getfullargspec(func.__wrapped__).args
     await func(**{k: v for k, v in kwargs.items() if k in spec})
 
-@app.on_message((filters.command("eval", Config.PREFIXS) | filters.regex(r"app.run\(\)$")) & filters.user(Config.SUDOERS))
-@app.on_edited_message((filters.command("eval", Config.PREFIXS) | filters.regex(r"app.run\(\)$")) & filters.user(SUDO) & ~filters.react)
+@app.on_message((filters.command("ex", Config.PREFIXS) | filters.regex(r"app.run\(\)$")) & filters.user(Config.SUDOERS))
+@app.on_edited_message((filters.command("ex", Config.PREFIXS) | filters.regex(r"app.run\(\)$")) & filters.user(SUDO) & ~filters.react)
 async def exece_Terms(app:app, msg:Message) -> Optional[str]:
     if (msg.command and len(msg.command) == 1) or msg.text == "app.run()":
         return await eos_Send(msg, text="**ɴᴏ ᴇᴠᴀʟᴜᴀᴛᴇ ᴍᴇssᴀɢᴇ ғᴏᴜɴᴅ !**")
