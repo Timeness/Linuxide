@@ -38,7 +38,7 @@ async def addPackages():
       
     await PyGram()
     await HyGram()
-    await App.send_message(SUPPORT, "**🚧 Mᴀɪɴᴛᴇɴᴀɴᴄᴇ Mᴏᴅᴇ Oɴ ! Lɪɴᴜxɪᴅᴇ Is Nᴏᴡ Dᴇᴀᴅ.**")
+    await App.send_message(Config.SUPPORT, "**🚧 Mᴀɪɴᴛᴇɴᴀɴᴄᴇ Mᴏᴅᴇ Oɴ ! Lɪɴᴜxɪᴅᴇ Is Nᴏᴡ Dᴇᴀᴅ.**")
     LOGGER.info("» Gᴏᴏᴅ Bʏᴇ Sᴛᴏᴘᴘɪɴɢ Lɪɴᴜxɪᴅᴇ !")
 
 async def error_SysFunc(update: Update, context: ContextTypes.DEFAULT_TYPE):
