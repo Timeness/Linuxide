@@ -1,14 +1,11 @@
-import glob
-from os.path import basename, dirname, isfile
+async def cosc_Push():
+    from glob import glob
+    from os.path import basename, dirname, isfile
 
-def __docs_modes():
-    mod_pass = glob.glob(dirname(__file__) + "/*.py")
-    modes = [
+    modas = glob(dirname(__file__) + "/*.py")
+    apugs = [
         basename(f)[:-3]
-        for f in mod_pass
-        if isfile(f) and f.endswith(".py") and not f.endswith("__init__.py")
+        for so in modas
+        if isfile(f) and so.endswith(".py") and not so.endswith("__init__.py")
     ]
-    return modes
-
-ALL_MODULES = sorted(__docs_modes())
-__all__ = ALL_MODULES + ["ALL_MODULES"]
+    return sorted(apugs)
