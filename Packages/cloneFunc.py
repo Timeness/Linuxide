@@ -3,6 +3,7 @@ import Config
 import asyncio
 import importlib
 from Linux import App, LOGGER
+from Packages import ALL_MODULES
 from pyrogram.types import Message
 from pyrogram.enums import ChatType
 from pyrogram import Client, filters
