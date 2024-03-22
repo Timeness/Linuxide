@@ -11,8 +11,8 @@ from inspect import getfullargspec
 from pyrogram.types import Message
 from Graph import mongo as Database
 from pyrogram import Client, filters
-from pyrogram.errors import MessageTooLong
 from asyncio import create_subprocess_shell, subprocess
+from pyrogram.errors import MessageTooLong, EntityBoundsInvalid
 
 # || ᴇxᴇᴄ ᴛᴇʀᴍɪɴᴀʟ sʏsᴛᴇᴍ ғᴜɴᴄᴛɪᴏɴ ʙᴀsᴇᴅ ᴘʏʀᴏɢʀᴀᴍ
 def ReplyCheck(message: Message):
@@ -36,7 +36,7 @@ async def editReply(msg: Message, **kwargs):
     spec = getfullargspec(func.__wrapped__).args 
     await func(**{k: v for k, v in kwargs.items() if k in spec})
 
-async def pyro_Excute_Func(app:app, msg:Message, db:Database, chat, user):
+async def pyro_Excute_Func(app:app, msg:Message, db:Database):
     if len(msg.command) < 2: 
         return await editReply(msg, text="**ɪɴᴘᴜᴛ ɴᴏᴛ ғᴏᴜɴᴅ ɢɪᴠᴇ ᴍᴇ ᴀ ᴄᴏᴅᴇ ᴛᴏ ᴇxᴄᴜᴛᴇ !**")
     source = await msg.reply("**ᴘʀᴏᴄᴇssɪɴɢ.**")
@@ -57,7 +57,9 @@ async def pyro_Excute_Func(app:app, msg:Message, db:Database, chat, user):
     stdout, stderr, exc = None, None, None 
     try:
         sticker = reply_by.sticker.file_id if hasattr(reply_by, 'sticker') and reply_by.sticker else None
+        user = reply_by.from_user if hasattr(reply_by, 'from_user') and reply_by.from_user else reply_by
         reply = msg.reply_to_message or None
+        chat = msg.chat
         await aexec(command, app, msg, sticker, reply, db, chat, user) 
     except Exception: 
         exc = traceback.format_exc()
@@ -102,9 +104,7 @@ async def pyro_Excute_Func(app:app, msg:Message, db:Database, chat, user):
 @app.on_message(filters.command(["py", "exec"], [".", "/", "?", "!", "$"]) & filters.user(Config.SUDOERS))
 @app.on_edited_message(filters.command(["py", "exec"], [".", "/", "?", "!", "$"]) & filters.user(Config.SUDOERS))
 async def exec_Pyro(app:app, msg:Message):
-    Chat = msg.chat
-    User = msg.from_user
-    await pyro_Excute_Func(app, msg, Database, Chat, User)
+    await pyro_Excute_Func(app, msg, Database)
 
 
 @app.on_message(filters.command("sh", [".", "/", "?", "!", "$"]) & filters.user(Config.SUDOERS))
