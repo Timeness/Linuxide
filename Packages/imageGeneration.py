@@ -68,32 +68,32 @@ async def generate_Image_Handler(msg, model):
 
 @app.on_message(filters.command("meinamix", ["?", "/", "!", ".", "$"]))
 async def genera_Funcs(app, msg):
-    await generate_Image_Handler(msg, model_id=2)
+    await generate_Image_Handler(msg, model=2)
 
 @app.on_message(filters.command("sushi", ["?", "/", "!", ".", "$"]))
 async def genera_Funcs(app, msg):
-    await generate_Image_Handler(msg, model_id=7)
+    await generate_Image_Handler(msg, model=7)
 
 @app.on_message(filters.command("meinahentai", ["?", "/", "!", ".", "$"]))
 async def genera_Funcs(app, msg):
-    await generate_Image_Handler(msg, model_id=8)
+    await generate_Image_Handler(msg, model=8)
   
 @app.on_message(filters.command("darksushimix", ["?", "/", "!", ".", "$"]))
 async def genera_Funcs(app, msg):
-    await generate_Image_Handler(msg, model_id=9)
+    await generate_Image_Handler(msg, model=9)
 
 @app.on_message(filters.command("anylora", ["?", "/", "!", ".", "$"]))
 async def genera_Funcs(app, msg):
-    await generate_Image_Handler(msg, model_id=3)
+    await generate_Image_Handler(msg, model=3)
 
 @app.on_message(filters.command("cetusmix", ["?", "/", "!", ".", "$"]))
 async def genera_Funcs(app, msg):
-    await generate_Image_Handler(msg, model_id=10)
+    await generate_Image_Handler(msg, model=10)
 
 @app.on_message(filters.command("darkv2", ["?", "/", "!", ".", "$"]))
 async def genera_Funcs(app, msg):
-    await generate_Image_Handler(msg, model_id=14)
+    await generate_Image_Handler(msg, model=14)
 
 @app.on_message(filters.command("creative", ["?", "/", "!", ".", "$"]))
 async def genera_Funcs(app, msg):
-    await generate_Image_Handler(msg, model_id=12)
+    await generate_Image_Handler(msg, model=12)
