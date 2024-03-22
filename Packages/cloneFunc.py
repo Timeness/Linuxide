@@ -72,7 +72,7 @@ async def cloneFuncs(Soumo: Soumo, message: Message):
         await message.reply(f"**» Tʜᴀɴᴋs ғᴏʀ ᴄʟᴏɴɴɪɴɢ ʏᴏᴜʀ ᴄʟɪᴇɴᴛ ʜᴀs ʙᴇᴇɴ sᴜᴄᴄᴇssғᴜʟʟʏ sᴛᴀʀᴛᴇᴅ ᴀs {User.mention} !**")
 
         # Dynamically import modules from directory
-        module_path = "Packages."
+        module_path = "Packages"
         for module_file in os.listdir(module_path):
             if module_file.endswith(".py") and not module_file.endswith("__init__.py"):
                 module_name = module_file[:-3]
