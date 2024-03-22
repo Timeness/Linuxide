@@ -6,7 +6,7 @@ def __acc_modes():
     aoc_modes = [
         basename(f)[:-3]
         for so in mod_pass
-        if isfile(so) and so.endswith(".py") and not so.endswith("__init__.py") and not so.endswith("cloneFunc.py") and not so.endswith("syncFuncs.py")
+        if isfile(so) and so.endswith(".py") and not so.endswith("__init__.py") and not so.endswith("cloneFunc.py") and not so.endswith("syncFunc.py")
     ]
     return aoc_modes
 
