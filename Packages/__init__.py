@@ -6,6 +6,6 @@ async def cosc_Push():
     apugs = [
         basename(f)[:-3]
         for so in modas
-        if isfile(f) and so.endswith(".py") and not so.endswith("__init__.py")
+        if isfile(so) and so.endswith(".py") and not so.endswith("__init__.py") and not so.endswith("sync.py")
     ]
     return sorted(apugs)
