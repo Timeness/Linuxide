@@ -10,6 +10,5 @@ def __acc_modes():
     ]
     return aoc_modes
 
-
 ALL_MODULES = sorted(__acc_modes())
 __all__ = ALL_MODULES + ["ALL_MODULES"]
