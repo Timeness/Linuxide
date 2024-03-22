@@ -15,11 +15,12 @@ from time import time
 from pyrogram import filters
 from Linux import App as app
 from bs4 import BeautifulSoup
+from Graph.http import fetch
 from pyrogram.types import Message
 from inspect import getfullargspec
 from typing import Optional, Tuple, Any
 from pyrogram.errors import MessageTooLong
-from Graph.eval_Helper import format_exception, meval, fetch
+from Graph.eval_Helper import format_exception, meval
 
 var = {}
 teskode = {}
