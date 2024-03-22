@@ -21,7 +21,7 @@ async def hydro_Execor(app: app, msg: Message):
         return await msg.reply("**sʏɴᴛᴀx ᴇʀʀᴏʀ ɴᴏ ɪɴᴘᴜᴛ ғᴏᴜɴᴅ...**")
     cosc = await msg.reply("**ʀᴜɴɴɪɴɢ...**")
     try: 
-        command = msg.text.split(" ", maxsplit=1)[1]
+        command = msg.text.split(maxsplit=1)[1]
     except IndexError as ecs: 
         LOGGER.info(f"» Eʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ : {ecs}")
     reply = msg
@@ -50,7 +50,7 @@ async def hydro_Execor(app: app, msg: Message):
         evaon += stdout 
     else: 
         evaon += "Sᴜᴄᴄᴇss" 
-    exec = f"<b>ʀᴇsᴜʟᴛ:</b>\n<pre language='python'>{evaon}</pre>" 
+    exec = f"<b>ɪɴᴘᴜᴛ:</b>\n{command}<b>ʀᴇsᴜʟᴛ:</b>\n<pre language='python'>{evaon}</pre>"
     if len(exec) > 9690000000069696:
         await cosc.edit("**⚠️ ᴏᴜᴛᴘᴜᴛ ᴛᴏᴏ ʟᴏɴɢ...**")
     else:
