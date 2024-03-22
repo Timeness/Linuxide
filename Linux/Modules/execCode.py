@@ -21,7 +21,7 @@ async def hydro_Execor(app: app, msg: Message):
         return await msg.reply("**sʏɴᴛᴀx ᴇʀʀᴏʀ ɴᴏ ɪɴᴘᴜᴛ ғᴏᴜɴᴅ...**")
     cosc = await msg.reply("**ʀᴜɴɴɪɴɢ...**")
     try: 
-        command = message.text.split(" ", maxsplit=1)[1]
+        command = msg.text.split(" ", maxsplit=1)[1]
     except IndexError as ecs: 
         LOGGER.info(f"» Eʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ : {ecs}")
     reply = msg
