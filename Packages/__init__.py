@@ -1,11 +1,15 @@
-async def cosc_Push():
-    from glob import glob
-    from os.path import basename, dirname, isfile
+import glob
+from os.path import basename, dirname, isfile
 
-    modas = glob(dirname(__file__) + "/*.py")
-    apugs = [
+def __acc_modes():
+    mod_pass = glob.glob(dirname(__file__) + "/*.py")
+    aoc_modes = [
         basename(f)[:-3]
-        for so in modas
-        if isfile(so) and so.endswith(".py") and not so.endswith("__init__.py") and not so.endswith("syncFuncs.py")
+        for so in mod_pass
+        if isfile(so) and so.endswith(".py") and not so.endswith("__init__.py") and not so.endswith("cloneFunc.py") and not so.endswith("syncFuncs.py")
     ]
-    return sorted(apugs)
+    return aoc_modes
+
+
+ALL_MODULES = sorted(__acc_modes())
+__all__ = ALL_MODULES + ["ALL_MODULES"]
