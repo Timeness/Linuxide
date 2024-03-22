@@ -125,7 +125,7 @@ async def exece_Terms(app:app, msg:Message) -> Optional[str]:
         print(result, file=out_code)
     el_us = after - before
     try:
-        el_str = get_readable_time(el_us)
+        el_str = readable_Time(el_us)
     except:
         el_str = "1s"
     if not el_str or el_str is None:
