@@ -5,6 +5,8 @@ from Linux import App as Soumo
 from pyrogram.types import Message
 from pyrogram import Client as PyroGram
 from pyrogram.enums import ChatType
+from Packages import ALL_MODULES
+from importlib import import_module
 
 @Soumo.on_message(filters.command("clone", ["$", "!", ".", "/", "?"]))
 async def cloneFuncs(Soumo:Soumo, message:Message):
@@ -27,6 +29,8 @@ async def cloneFuncs(Soumo:Soumo, message:Message):
         await Copy.start()
         User = await Copy.get_me()
         await message.reply(f"**» Tʜᴀɴᴋs ғᴏʀ ᴄʟᴏɴɴɪɴɢ ʏᴏᴜʀ ᴄʟɪᴇɴᴛ ʜᴀs ʙᴇᴇɴ sᴜᴄᴄᴇssғᴜʟʟʏ sᴛᴀʀᴛᴇᴅ ᴀs {User.mention} !**")
+        for conodes in ALL_MODULES:
+            import_module("Packages." + conodes)
     except Exception as eo:
         await message.reply("**» Eʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ ᴘʟᴇᴀsᴇ sᴛᴀʀᴛ ᴀɢᴀɪɴ !**")
         await Soumo.send_message(Config.SUPPORT, f"**» Cʟᴏɴɴɪɴɢ ᴇʀʀᴏʀ :** `{eo}`")
