@@ -14,12 +14,8 @@ from telegram.error import (
 )
 
 async def addPackages():
-    try:
-        await App.start()
-        await Sakura.start()
-    except Exception as eosc:
-        LOGGER.info(eosc)
-        sys.exit()
+    await App.start()
+    await Sakura.start()
     for nodes in ALL_MODULES:
         import_module("Linux.Modules." + nodes)
     LOGGER.info("» Sᴜᴄᴄᴇssғᴜʟʟʏ ɪᴍᴘᴏʀᴛᴇᴅ ᴀʟʟ ᴍᴏᴅᴜʟᴇs ᴀɴᴅ ᴅᴇᴘʟᴏʏᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ !")
