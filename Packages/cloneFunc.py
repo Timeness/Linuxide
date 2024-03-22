@@ -15,7 +15,7 @@ async def cloneFuncs(Soumo:Soumo, message:Message):
     await Cexc.edit("**ᴜsᴇ: /clone ʏᴏᴜʀ ʙᴏᴛ ᴛᴏᴋᴇɴ**")
     BOT_TOKEN = message.text.split(None, 1)[1]
     try:
-        await Texc.edit("**» Tʀʏ ᴛᴏ ʙᴏᴏᴛɪɴɢ ʏᴏᴜʀ ᴄʟɪᴇɴᴛ...**")                   
+        await Cexc.edit("**» Tʀʏ ᴛᴏ ʙᴏᴏᴛɪɴɢ ʏᴏᴜʀ ᴄʟɪᴇɴᴛ...**")                   
         Copy = PyroGram(
             ":memory:",
             api_id=Config.API_ID,
