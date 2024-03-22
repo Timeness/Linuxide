@@ -13,3 +13,8 @@ python-telegram-bot
 apscheduler
 telegraph
 shortuuid
+httpx[http2]
+cloudscraper
+aiofiles
+pytz
+beautifulsoup4
