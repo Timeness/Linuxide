@@ -8,7 +8,7 @@ from pyrogram.types import Message
 @client.on_message(filters.new_chat_members)
 async def member_premium(client: client, message: Message) -> None:
     check = message.new_chat_members[0]
-    user = await client.get_user(check.id)
+    user = await client.get_users(check.id)
     if await wepre.find_one({"chat_id": message.chat.id}):
         if user.is_premium:
             await client.ban_chat_member(message.chat.id, user.id)
