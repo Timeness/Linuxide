@@ -17,7 +17,7 @@ async def addPackages():
     await App.start()
     await Sakura.start()
     for nodes in ALL_MODULES:
-        import_module("Linux.Modules" + nodes)
+        import_module("Linux.Modules." + nodes)
     LOGGER.info("» Sᴜᴄᴄᴇssғᴜʟʟʏ ɪᴍᴘᴏʀᴛᴇᴅ ᴀʟʟ ᴍᴏᴅᴜʟᴇs ᴀɴᴅ ᴅᴇᴘʟᴏʏᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ !")
     try:
         Resocs = await Clean_Stage()
