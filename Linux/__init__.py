@@ -1,3 +1,4 @@
+import os
 import sys
 import Config
 import logging, asyncio, time
@@ -6,6 +7,7 @@ from telegram.ext import Application
 from pyrogram import Client as PyGram
 from hydrogram import Client as HyGram
 from telegram.constants import ParseMode
+from logging import StreamHandler, basicConfig
 from logging.handlers import RotatingFileHandler
 
 GUARDS = []
@@ -23,19 +25,26 @@ __version__ = (
     {"status": "on"}
 )
 
-logging.basicConfig(
+if os.path.exists("Logs.txt"):
+    with open("Logs.txt", "r+") as aeo:
+        aeo.truncate(0)
+
+basicConfig(
     level=logging.INFO,
-    format="[%(levelname)s] - %(name)s - %(message)s",
+    format="[%(levelname)s] - [%(asctime)s - %(name)s - %(message)s] -> [%(module)s:%(lineno)d]",
     datefmt="%d-%b-%y %H:%M:%S",
     handlers=[
-        RotatingFileHandler("logs.txt", maxBytes=50000000, backupCount=10),
-        logging.StreamHandler(),
+        RotatingFileHandler("Logs.txt", mode="w+", maxBytes=50000000, backupCount=10),
+        StreamHandler()
     ]
 )
+LOGGER = logging.getLogger("Lɪɴᴜxɪᴅᴇ")
+
+
 #logging.getLogger("asyncio").setLevel(logging.CRITICAL)
 #logging.getLogger("pyrogram").setLevel(logging.WARNING)
 #logging.getLogger("hydrogram").setLevel(logging.WARNING)
-LOGGER = logging.getLogger(__name__)
+
 
 if not Config.API_ID:
     LOGGER.warning("» Wᴀʀɴɪɴɢ: ᴀᴘɪ_ɪᴅ ɴᴏᴛ ғᴏᴜɴᴅ ɪɴ ᴄᴏɴғɪɢ ғɪʟᴇs sʜᴜᴛᴅᴏᴡɴ ʙᴏᴛ !")
