@@ -20,25 +20,31 @@ async def error_SysFunc(update: Update, context: ContextTypes.DEFAULT_TYPE):
     try:
         raise error
     except Forbidden:
+        pass
         #LOGGER.info("» Nᴏɴᴇ ! Cᴜʀʀᴇɴᴛ Tᴇsᴛ Oɴɢᴏɪɴɢ ᴠ1.")
         #LOGGER.info(error)
         # ʀᴇᴍᴏᴠᴇ ᴜᴘᴅᴀᴛᴇ.ᴄʜᴀᴛ_ɪᴅ ғʀᴏᴍ ᴄᴏɴᴠᴇʀsᴀᴛɪᴏɴ ʟɪsᴛ
     except BadRequest:
+        pass
         #LOGGER.info("» Nᴏɴᴇ ! Cᴜʀʀᴇɴᴛ Tᴇsᴛ Oɴɢᴏɪɴɢ ᴠ2.")
         #LOGGER.info("» Bᴀᴅʀᴇǫᴜᴇsᴛ Cᴀᴜɢʜᴛ !")
         #LOGGER.info(error)
         # ʜᴀɴᴅʟᴇ ᴍᴀʟғᴏʀᴍᴇᴅ ʀᴇǫᴜᴇsᴛs - ʀᴇᴀᴅ ᴍᴏʀᴇ ʙᴇʟᴏᴡ !
     except TimedOut:
+        pass
         #LOGGER.info("» Nᴏɴᴇ ! Cᴜʀʀᴇɴᴛ Tᴇsᴛ Oɴɢᴏɪɴɢ ᴠ3.")
         # ʜᴀɴᴅʟᴇ sʟᴏᴡ ᴄᴏɴɴᴇᴄᴛɪᴏɴ ᴘʀᴏʙʟᴇᴍs
     except NetworkError:
+        pass
         #LOGGER.info("» Nᴏɴᴇ ! Cᴜʀʀᴇɴᴛ Tᴇsᴛ Oɴɢᴏɪɴɢ ᴠ4.")
         # ʜᴀɴᴅʟᴇ ᴏᴛʜᴇʀ ᴄᴏɴɴᴇᴄᴛɪᴏɴ ᴘʀᴏʙʟᴇᴍs
     except ChatMigrated as eorr:
+        pass
         #LOGGER.info("» Nᴏɴᴇ ! Cᴜʀʀᴇɴᴛ Tᴇsᴛ Oɴɢᴏɪɴɢ ᴠ5.")
         #LOGGER.info(eorr)
         # ᴛʜᴇ ᴄʜᴀᴛ_ɪᴅ ᴏғ ᴀ ɢʀᴏᴜᴘ ʜᴀs ᴄʜᴀɴɢᴇᴅ ᴜsᴇ ᴇ.ɴᴇᴡ_ᴄʜᴀᴛ_ɪᴅ ɪɴsᴛᴇᴀᴅ
     except TelegramError:
+        pass
         #LOGGER.info(error)
         # ʜᴀɴᴅʟᴇ ᴀʟʟ ᴏᴛʜᴇʀ ᴛᴇʟᴇɢʀᴀᴍ ʀᴇʟᴀᴛᴇᴅ ᴇʀʀᴏʀs
 
