@@ -46,6 +46,9 @@ class LOGGER():
     def info(text):
         print(text)
 
+    def warning(text):
+        print(text)
+
 #logging.getLogger("asyncio").setLevel(logging.CRITICAL)
 #logging.getLogger("pyrogram").setLevel(logging.WARNING)
 #logging.getLogger("hydrogram").setLevel(logging.WARNING)
