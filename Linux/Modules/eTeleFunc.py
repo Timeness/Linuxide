@@ -10,7 +10,7 @@ from telegram.constants import ParseMode
 from telegram import Chat, Message, Update, User
 from telegram.ext import ContextTypes, PrefixHandler
 
-nameSpaces = {}
+namespaces = {}
 
 def namespace_Funcs(Chat, update, context):
     if Chat not in namespaces:
@@ -33,7 +33,7 @@ def namespace_Funcs(Chat, update, context):
     return namespaces[Chat]
 
 def code_Input(update):
-    code = update.message.text.split(None, 1)[1]
+    code = update.effective_message.text.split(None, 1)[1]
     return code
 
 async def execues_Funcs(update:Update, context:ContextTypes.DEFAULT_TYPE) -> None:
