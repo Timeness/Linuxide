@@ -3,23 +3,14 @@ import ast
 import traceback
 from typing import List, Optional
 
-# Wᴇ ᴅᴏɴᴛ ᴍᴏᴅɪғʏ ʟᴏᴄᴀʟs VVVV : ᴛʜɪs ʟᴇᴛs ᴜs ᴋᴇᴇᴘ ᴛʜᴇ ᴍᴇssᴀɢᴇ ᴀᴠᴀɪʟᴀʙʟᴇ ᴛᴏ ᴛʜᴇ ᴜsᴇʀ-ᴘʀᴏᴠɪᴅᴇᴅ ғᴜɴᴄᴛɪᴏɴ
-async def meval(code, globs, **kwargs):
-    # Tʜɪs ғᴜɴᴄᴛɪᴏɴ ɪs ʀᴇʟᴇᴀsᴇᴅ ɪɴ ᴛʜᴇ ᴘᴜʙʟɪᴄ ᴅᴏᴍᴀɪɴ. Fᴇᴇʟ ғʀᴇᴇ ᴛᴏ ᴋᴀɴɢ ɪᴛ (ᴀʟᴛʜᴏᴜɢʜ I ʟɪᴋᴇ ᴄʀᴇᴅɪᴛ)
-    # Nᴏᴛᴇ ᴛᴏ sᴇʟғ: ᴘʟᴇᴀsᴇ ᴅᴏɴ'ᴛ sᴇᴛ ɢʟᴏʙᴀʟs ʜᴇʀᴇ ᴀs ᴛʜᴇʏ ᴡɪʟʟ ʙᴇ ʟᴏsᴛ.
-    # Dᴏɴ'ᴛ ᴄʟᴜᴛᴛᴇʀ ʟᴏᴄᴀʟs
+async def myEval(code, globs, **kwargs):
     locs = {}
-    # Rᴇsᴛᴏʀᴇ ɢʟᴏʙᴀʟs ʟᴀᴛᴇʀᴛʏᴘᴇs
     globs = globs.copy()
-    # Tʜɪs ᴄᴏᴅᴇ sᴀᴠᴇs __ɴᴀᴍᴇ__ ᴀɴᴅ __ᴘᴀᴄᴋᴀɢᴇ ɪɴᴛᴏ ᴀ ᴋᴡᴀʀɢ ᴘᴀssᴇᴅ ᴛᴏ ᴛʜᴇ ғᴜɴᴄᴛɪᴏɴ.
-    # Iᴛ ɪs sᴇᴛ ʙᴇғᴏʀᴇ ᴛʜᴇ ᴜsᴇʀs ᴄᴏᴅᴇ ʀᴜɴs ᴛᴏ ᴍᴀᴋᴇ sᴜʀᴇ ʀᴇʟᴀᴛɪᴠᴇ ɪᴍᴘᴏʀᴛs ᴡᴏʀᴋ
     global_args = "_globs"
     while global_args in globs.keys():
-        # Mᴀᴋᴇ sᴜʀᴇ ᴛʜᴇʀᴇ's ɴᴏ ɴᴀᴍᴇ ᴄᴏʟʟɪsɪᴏɴ Jᴜsᴛ ᴋᴇᴇᴘ ᴘʀᴇᴘᴇɴᴅɪɴɢ __s
         global_args = f"_{global_args}"
     kwargs[global_args] = {}
     for glob in ["__name__", "__package__"]:
-        # Cᴏᴘʏ ᴅᴀᴛᴀ ᴛᴏ ᴀʀɢs ᴡᴇ ᴀʀᴇ sᴇɴᴅɪɴɢ
         kwargs[global_args][glob] = globs[glob]
 
     root = ast.parse(code, "exec")
@@ -40,7 +31,6 @@ async def meval(code, globs, **kwargs):
 
     if not code:
         return None
-
     if not any(isinstance(node, ast.Return) for node in code):
         for i in range(len(code)):
             if isinstance(code[i], ast.Expr) and (
