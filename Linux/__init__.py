@@ -5,14 +5,19 @@ from Graph import Clean_Stage
 from telegram.ext import Application
 from pyrogram import Client as PyGram
 from hydrogram import Client as HyGram
+from telegram.constants import ParseMode
 from logging.handlers import RotatingFileHandler
 
 GUARDS = []
 for GUARD_USERS in Config.GUARDS:
-    if not GUARD_USERS in GUARDS:
+    if GUARD_USERS not in GUARDS:
         GUARDS.append(GUARD_USERS)
-        break
+    elif GUARDS not in GUARD_USERS:
+        GUARD_USERS.append(GUARDS)
+
+DELETE_COMMANDS = True
 START_TIME = time.time()
+Loop = asyncio.get_event_loop() 
 __version__ = (
     {"version": 0.2},
     {"status": "on"}
@@ -85,7 +90,7 @@ async def addPackages():
 
 pyApp = Application.builder().token(Config.BOT_TOKEN).build()
 Func = pyApp.add_handler
-asyncio.get_event_loop().run_until_complete(
+Loop.run_until_complete(
     asyncio.gather(pyApp.bot.initialize(), addPackages())
 )
 
