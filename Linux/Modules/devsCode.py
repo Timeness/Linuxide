@@ -59,4 +59,4 @@ async def userID_Funcs(app: App, message: Message):
         TEXT += f"**ғᴏʀᴡᴀʀᴅᴇᴅ ᴄʜᴀɴɴᴇʟ ɪs [{Reply.forward_from_chat.title}](tg://user?id={Reply.forward_from_chat.id}) ʜᴀs ᴀɴ ɪᴅ :** `{Reply.forward_from_chat.id}`\n\n"        
     if Reply and Reply.sender_chat:
         TEXT += f"**ʀᴇᴘʟɪᴇᴅ ᴄʜᴀᴛ/ᴄʜᴀɴɴᴇʟ ɪs [{Reply.sender_chat.title}](tg://user?id={Reply.sender_chat.id}) ʜᴀs ᴀɴ ɪᴅ :** `{Reply.sender_chat.id}`"
-    await app.send_message(Chat.id, TEXT)
+    await app.send_photo(Chat.id, photo=Config.GIST_IMAGE, caption=TEXT)
