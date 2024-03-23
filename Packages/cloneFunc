@@ -8,7 +8,6 @@ from pyrogram.types import Message
 from pyrogram.enums import ChatType
 from pyrogram import Client, filters
 
-
 @App.on_message(filters.command("clone", ["$", "!", ".", "/", "?"]))
 async def cloneFuncs(Soumo: App, message: Message) -> None:
     if message.chat.type != ChatType.PRIVATE:
