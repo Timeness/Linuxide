@@ -137,7 +137,7 @@ async def exece_Terms(app:app, msg:Message) -> Optional[str]:
     if out.endswith("\n"):
         out = out[:-1]
     try:
-        success = f"{prefix}**ɪɴᴘᴜᴛ:**\n<pre language='python'>{code}</pre>\n**ᴏᴜᴛᴘᴜᴛ:**\n<pre language='python'>{out}</pre>\n**ᴇxᴇᴄᴜᴛᴇᴅ ᴛɪᴍᴇ:** {el_str}"
+        success = f"{prefix}**ɪɴᴘᴜᴛ:**\n<pre>{code}</pre>\n**ᴏᴜᴛᴘᴜᴛ:**\n<pre>{out}</pre>\n**ᴇxᴇᴄᴜᴛᴇᴅ ᴛɪᴍᴇ:** {el_str}"
         await eos_Send(msg, text=success)
         await message.delete()
     except MessageTooLong:
