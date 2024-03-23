@@ -1,17 +1,19 @@
 import sys
-import time
 import Config
-import asyncio
-import logging
+import logging, asyncio, time
 from telegram.ext import Application
 from pyrogram import Client as PyGram
 from hydrogram import Client as HyGram
 from logging.handlers import RotatingFileHandler
 
-GUARDS = {}
+GUARDS = []
+for GUARD_USERS in Config.GUARDS:
+    if not GUARD_USERS in GUARDS:
+        GUARDS.append(GUARD_USERS)
+        break
 START_TIME = time.time()
 __version__ = (
-    {"version": 0.1},
+    {"version": 0.2},
     {"status": "on"}
 )
 
@@ -22,7 +24,7 @@ logging.basicConfig(
     handlers=[
         RotatingFileHandler("logs.txt", maxBytes=50000000, backupCount=10),
         logging.StreamHandler(),
-    ],
+    ]
 )
 logging.getLogger("asyncio").setLevel(logging.CRITICAL)
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
@@ -32,11 +34,9 @@ LOGGER = logging.getLogger(__name__)
 if not Config.API_ID:
     LOGGER.warning("» Wᴀʀɴɪɴɢ: ᴀᴘɪ_ɪᴅ ɴᴏᴛ ғᴏᴜɴᴅ ɪɴ ᴄᴏɴғɪɢ ғɪʟᴇs sʜᴜᴛᴅᴏᴡɴ ʙᴏᴛ !")
     sys.exit()
-    
 elif not Config.API_HASH:
     LOGGER.warning("» Wᴀʀɴɪɴɢ: ᴀᴘɪ_ʜᴀsʜ ɴᴏᴛ ғᴏᴜɴᴅ ɪɴ ᴄᴏɴғɪɢ ғɪʟᴇs sʜᴜᴛᴅᴏᴡɴ ʙᴏᴛ !")
     sys.exit()
-
 elif not Config.BOT_TOKEN:
    LOGGER.warning("» Wᴀʀɴɪɴɢ: ʙᴏᴛ_ᴛᴏᴋᴇɴ ɴᴏᴛ ғᴏᴜɴᴅ ɪɴ ᴄᴏɴғɪɢ ғɪʟᴇs sʜᴜᴛᴅᴏᴡɴ ʙᴏᴛ !")
    sys.exit()
