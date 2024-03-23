@@ -136,8 +136,8 @@ async def shCode_Func(app:app, msg:Message):
     success = ""
     success += f"<b>sʜᴇʟʟ ǫᴜᴇʀʏ:</b>\n<pre>{command}</pre>\n"
     success += f"<b>ᴘʀᴏᴄᴇss ᴘɪᴅ:</b> <code>{process.pid}</code>\n"
-    success += f"<b>ᴏᴜᴛᴘᴜᴛ sᴛᴅᴇʀʀ:</b>\n<pre language='Terminal'>{eor}</pre>\n"
-    success += f"<b>ᴏᴜᴛᴘᴜᴛ sᴛᴅᴏᴜᴛ:</b>\n<pre language='Terminal'>{out}</pre>\n"
+    success += f"<b>ᴏᴜᴛᴘᴜᴛ sᴛᴅᴇʀʀ:</b>\n<pre>{eor}</pre>\n"
+    success += f"<b>ᴏᴜᴛᴘᴜᴛ sᴛᴅᴏᴜᴛ:</b>\n<pre>{out}</pre>\n"
     success += f"<b>ᴘʀᴏᴄᴇss ᴛɪᴍᴇ:</b> <code>{pong}</code> <b>ᴍs</b>"
     try:
         await source.edit(success)
