@@ -15,11 +15,11 @@ from time import time
 from Graph import mongo
 from pyrogram import filters
 from Linux import App as app
-from Graph.http import fetch
 from bs4 import BeautifulSoup
 from inspect import getfullargspec
 from pyrogram.enums import ParseMode
-from typing import Optional, Tuple, Any 
+from typing import Optional, Tuple, Any
+from Graph.WebScrap import WebScrap, Fetch
 from pyrogram.errors import MessageTooLong
 from Graph.eval_Helper import format_exception, myEval
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
@@ -92,6 +92,8 @@ async def exece_Terms(app:app, msg:Message) -> Optional[str]:
             "user": user,
             "sticker": sticker,
             "ParseMode": ParseMode,
+            "MARKDOWN": ParseMode.MARKDOWN,
+            "HTML": ParseMode.HTML,
             "IKB": InlineKeyboardButton,
             "IKM": InlineKeyboardMarkup,
             "asyncio": asyncio,
@@ -102,7 +104,8 @@ async def exece_Terms(app:app, msg:Message) -> Optional[str]:
             "send": send,
             "stdout": out_code,
             "traceback": traceback,
-            "fetch": fetch,
+            "webscrap": WebScrap,
+            "fetch": Fetch,
             "reply": msg.reply_to_message,
             "requests": requests,
             "soup": BeautifulSoup,
