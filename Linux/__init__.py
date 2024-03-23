@@ -32,7 +32,7 @@ logging.basicConfig(
         logging.StreamHandler(),
     ]
 )
-logging.getLogger('httpx').setLevel(logging.WARNING)
+
 logging.getLogger("asyncio").setLevel(logging.CRITICAL)
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 logging.getLogger("hydrogram").setLevel(logging.WARNING)
