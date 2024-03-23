@@ -137,8 +137,8 @@ async def exece_Terms(app:app, msg:Message) -> Optional[str]:
     if out.endswith("\n"):
         out = out[:-1]
     try:
-        success = f"{prefix}<b>ɪɴᴘᴜᴛ:</b>\n<pre language='python'>{code}</pre>\n<b>ᴏᴜᴛᴘᴜᴛ:</b>\n<pre language='python'>{out}</pre>\nᴇxᴇᴄᴜᴛᴇᴅ ᴛɪᴍᴇ: {el_str}"
-        await eos_Send(msg, text=success, parse_mode=ParseMode.MARKDOWN)
+        success = f"{prefix}**ɪɴᴘᴜᴛ:**\n<pre language='python'>{code}</pre>\n**ᴏᴜᴛᴘᴜᴛ:**\n<pre language='python'>{out}</pre>\n**ᴇxᴇᴄᴜᴛᴇᴅ ᴛɪᴍᴇ:** {el_str}"
+        await eos_Send(msg, text=success)
         await message.delete()
     except MessageTooLong:
         with io.BytesIO(str.encode(success)) as Zeep:
