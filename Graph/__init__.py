@@ -6,7 +6,7 @@ from Graph.WebScrap import *
 MONGO_URI = ("mongodb+srv://MrsMayura:Mayura6969@cluster0.5gpauan.mongodb.net/?retryWrites=true&w=majority")
 MOTOR_URI = ("mongodb+srv://RiasGremory:Rias6969@cluster0.37ripjq.mongodb.net/?retryWrites=true&w=majority")
 from os import execvp
-#from Linux import LOGGER
+from Linux import LOGGER
 from sys import executable
 from pymongo import MongoClient
 from pyrogram.types import Message
@@ -17,22 +17,18 @@ from motor.motor_asyncio import AsyncIOMotorClient as MongoDB
 try:
     db = MongoDB(MOTOR_URI)
 except InvalidURI:
-    pass
-    #LOGGER.info("» Iɴᴠᴀʟɪᴅ ᴍᴏɴɢᴏ ᴜʀɪ ᴏʀ ɪᴛs ᴇxᴘɪʀᴇᴅ !")
+    LOGGER.info("» Iɴᴠᴀʟɪᴅ ᴍᴏɴɢᴏ ᴜʀɪ ᴏʀ ɪᴛs ᴇxᴘɪʀᴇᴅ !")
 except Exception as eos:
-    pass
-   #LOGGER.info(f"» Mᴏɴɢᴏ ᴍᴏᴛᴏʀ ᴄʟɪᴇɴᴛ ᴇʀʀᴏʀ : {eos}")
+    LOGGER.info(f"» Mᴏɴɢᴏ ᴍᴏᴛᴏʀ ᴄʟɪᴇɴᴛ ᴇʀʀᴏʀ : {eos}")
 except PyMongoError:
     pass
 
 try:
     mongo = MongoClient(MONGO_URI)
 except InvalidURI:
-    pass
-    #LOGGER.info("» Iɴᴠᴀʟɪᴅ ᴍᴏɴɢᴏ ᴜʀɪ ᴏʀ ɪᴛs ᴇxᴘɪʀᴇᴅ !")
+    LOGGER.info("» Iɴᴠᴀʟɪᴅ ᴍᴏɴɢᴏ ᴜʀɪ ᴏʀ ɪᴛs ᴇxᴘɪʀᴇᴅ !")
 except Exception as eoc:
-    pass
-    #LOGGER.info(f"» Mᴏɴɢᴏ ᴄʟɪᴇɴᴛ ᴇʀʀᴏʀ : {eoc}")
+    LOGGER.info(f"» Mᴏɴɢᴏ ᴄʟɪᴇɴᴛ ᴇʀʀᴏʀ : {eoc}")
 except PyMongoError:
    pass
 
