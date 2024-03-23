@@ -58,8 +58,8 @@ if __name__ == "__main__":
         LOGGER.info(f"Eʀʀᴏʀ Oᴄᴄᴜʀʀᴇᴅ : {eocs}")
     finally:
         try:
-            if loop.is_running():
-                loop.stop()
+            if Loop.is_running():
+                Loop.stop()
         finally:
-            loop.close()
+            Loop.close()
         LOGGER.info("------------------------ Lɪɴᴜxɪᴅᴇ Sᴛᴏᴘᴘᴇᴅ Sᴇʀᴠɪᴄᴇs ------------------------")
