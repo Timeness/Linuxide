@@ -32,10 +32,9 @@ logging.basicConfig(
         logging.StreamHandler(),
     ]
 )
-
-logging.getLogger("asyncio").setLevel(logging.CRITICAL)
-logging.getLogger("pyrogram").setLevel(logging.WARNING)
-logging.getLogger("hydrogram").setLevel(logging.WARNING)
+#logging.getLogger("asyncio").setLevel(logging.CRITICAL)
+#logging.getLogger("pyrogram").setLevel(logging.WARNING)
+#logging.getLogger("hydrogram").setLevel(logging.WARNING)
 LOGGER = logging.getLogger(__name__)
 
 if not Config.API_ID:
