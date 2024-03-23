@@ -25,6 +25,7 @@ __version__ = (
     {"status": "on"}
 )
 
+"""
 if os.path.exists("Logs.txt"):
     with open("Logs.txt", "r+") as aeo:
         aeo.truncate(0)
@@ -40,6 +41,10 @@ basicConfig(
 )
 LOGGER = logging.getLogger("Lɪɴᴜxɪᴅᴇ")
 
+"""
+class LOGGER():
+    def info(text):
+        print(text)
 
 #logging.getLogger("asyncio").setLevel(logging.CRITICAL)
 #logging.getLogger("pyrogram").setLevel(logging.WARNING)
