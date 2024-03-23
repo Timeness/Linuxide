@@ -6,6 +6,7 @@ from io import StringIO
 from hydrogram import filters
 from hydrogram.types import Message
 from Linux import Sakura as app, LOGGER
+from hydrogram.errors import MessageTooLong
   
 async def aexec(code, app, msg, user): 
     exec( 
@@ -49,9 +50,9 @@ async def hydro_Execor(app: app, msg: Message):
     elif stdout: 
         evaon += stdout 
     else: 
-        evaon += "Sᴜᴄᴄᴇss" 
-    exec = f"<b>ɪɴᴘᴜᴛ:</b>\n<pre>{command}</pre>\n<b>ʀᴇsᴜʟᴛ:</b>\n<pre language='python'>{evaon}</pre>"
-    if len(exec) > 9690000000069696:
-        await cosc.edit("**⚠️ ᴏᴜᴛᴘᴜᴛ ᴛᴏᴏ ʟᴏɴɢ...**")
-    else:
+        evaon += "Sᴜᴄᴄᴇss"
+    try:
+        exec = f"<b>ɪɴᴘᴜᴛ:</b>\n<pre>{command}</pre>\n<b>ʀᴇsᴜʟᴛ:</b>\n<pre language='python'>{evaon}</pre>"
         await cosc.edit(exec)
+    except MessageTooLong:
+        await cosc.edit("**⚠️ ᴏᴜᴛᴘᴜᴛ ᴛᴏᴏ ʟᴏɴɢ...**")
