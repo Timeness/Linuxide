@@ -1,40 +1,19 @@
-import sys
 import Config
 import asyncio
+import traceback
 from telegram import Update
-from Graph import Clean_Stage
 from importlib import import_module
-from pyrogram import idle as PyGram
-from hydrogram import idle as HyGram
+from Linux import LOGGER, Loop, pyApp
 from Linux.Modules import ALL_MODULES
 from telegram.ext import ContextTypes
-from Linux import App, Sakura, LOGGER, pyApp
 from telegram.error import (
     BadRequest, ChatMigrated, Forbidden, NetworkError, TelegramError, TimedOut
 )
 
-async def addPackages():
-    await App.start()
-    await Sakura.start()
-    for nodes in ALL_MODULES:
-        import_module("Linux.Modules." + nodes)
-    LOGGER.info("» Sᴜᴄᴄᴇssғᴜʟʟʏ ɪᴍᴘᴏʀᴛᴇᴅ ᴀʟʟ ᴍᴏᴅᴜʟᴇs ᴀɴᴅ ᴅᴇᴘʟᴏʏᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ !")
-    try:
-        Resocs = await Clean_Stage()
-        if Resocs:
-            await App.edit_message_text(
-                Resocs["chat_id"],
-                Resocs["message_id"],
-                "**🔮 Lɪɴᴜxɪᴅᴇ Rᴇsᴛᴀʀᴛᴇᴅ Sᴜᴄᴄᴇssғᴜʟʟʏ !**"
-            )
-        else:
-            await App.send_message(Config.SUPPORT, "**🔮 Lɪɴᴜxɪᴅᴇ Cʟᴏᴜᴅ Sᴇʀᴠᴇʀ Sᴛᴀʀᴛᴇᴅ !**")
-    except Exception:
-        LOGGER.info("» Bᴏᴛ ʜᴀs ғᴀɪʟᴇᴅ ᴛᴏ ᴀᴄᴄᴇss ᴛʜᴇ sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ. ᴍᴀᴋᴇ sᴜʀᴇ ᴛʜᴀᴛ ʏᴏᴜ ʜᴀᴠᴇ ᴀᴅᴅᴇᴅ ʏᴏᴜʀ ʙᴏᴛ ᴛᴏ ʏᴏᴜʀ sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ.")
-      
-    
-    await App.send_message(Config.SUPPORT, "**🚧 Mᴀɪɴᴛᴇɴᴀɴᴄᴇ Mᴏᴅᴇ Oɴ ! Lɪɴᴜxɪᴅᴇ Is Nᴏᴡ Dᴇᴀᴅ.**")
-    LOGGER.info("» Gᴏᴏᴅ Bʏᴇ Sᴛᴏᴘᴘɪɴɢ Lɪɴᴜxɪᴅᴇ !")
+# Iᴍᴘᴏᴀʀᴛᴀʙʟᴇ ᴍᴏᴅᴜʟᴇs ғᴜɴᴄᴛɪᴏɴ...
+for Modes in ALL_MODULES:
+    import_module("Linux.Modules." + Modes)
+LOGGER.info("Sᴜᴄᴄᴇssғᴜʟʟʏ Lᴏᴀᴅᴇᴅ Mᴏᴅᴜʟᴇs :" + str(Modes))
 
 async def error_SysFunc(update: Update, context: ContextTypes.DEFAULT_TYPE):
     error = context.error
@@ -63,12 +42,24 @@ async def error_SysFunc(update: Update, context: ContextTypes.DEFAULT_TYPE):
         LOGGER.info(error)
         # ʜᴀɴᴅʟᴇ ᴀʟʟ ᴏᴛʜᴇʀ ᴛᴇʟᴇɢʀᴀᴍ ʀᴇʟᴀᴛᴇᴅ ᴇʀʀᴏʀs
 
-def superPy_Run() -> None:
+def secPy_Run() -> None:
     LOGGER.info("» Pʏᴛʜᴏɴ ᴛᴇʟᴇɢʀᴀᴍ ʙᴏᴛ ᴄʟɪᴇɴᴛ ʟᴀʏᴇʀ sᴛᴀʀᴛᴇᴅ !")
     pyApp.add_error_handler(error_SysFunc)
     pyApp.run_polling(timeout=15, drop_pending_updates=True, allowed_updates=Update.MESSAGE)
 
 if __name__ == "__main__":
-    asyncio.get_event_loop().run_until_complete(addPackages())
-    superPy_Run()
-    LOGGER.info("» Lɪɴᴜxɪᴅᴇ sᴜᴄᴄᴇssғᴜʟʟʏ ᴀᴄᴛɪᴠᴀᴛᴇᴅ !")
+    try:
+        secPy_Run()
+        LOGGER.info("Lɪɴᴜxɪᴅᴇ Sᴛᴀʀᴛᴇᴅ As Pʏᴛʜᴏɴ Tᴇʟᴇɢʀᴀᴍ Bᴏᴛ Vᴇʀsɪᴏɴ !")
+    except KeyboardInterrupt:
+        pass
+    except Exception:
+        eocs = traceback.format_exc()
+        LOGGER.info(f"Eʀʀᴏʀ Oᴄᴄᴜʀʀᴇᴅ : {eocs}")
+    finally:
+        try:
+            if loop.is_running():
+                loop.stop()
+        finally:
+            loop.close()
+        LOGGER.info("------------------------ Lɪɴᴜxɪᴅᴇ Sᴛᴏᴘᴘᴇᴅ Sᴇʀᴠɪᴄᴇs ------------------------")
