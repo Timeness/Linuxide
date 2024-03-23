@@ -68,7 +68,6 @@ async def exece_Terms(app:app, msg:Message) -> Optional[str]:
     async def _eval() -> Tuple[str, Optional[str]]:
         async def send(*args: Any, **kwargs: Any) -> Message:
             return await msg.reply(*args, **kwargs)
-
         # ᴘʀɪɴᴛ ᴡʀᴀᴘᴘᴇʀ ᴛᴏ ᴄᴀᴘᴛᴜʀᴇ ᴏᴜᴛᴘᴜᴛ
         # ᴡᴇ ᴅᴏɴ'ᴛ ᴏᴠᴇʀʀɪᴅᴇ sʏs.sᴛᴅᴏᴜᴛ ᴛᴏ ᴀᴠᴏɪᴅ ɪɴᴛᴇʀғᴇʀɪɴɢ ᴡɪᴛʜ ᴏᴛʜᴇʀ ᴏᴜᴛᴘᴜᴛ
         def _print(*args: Any, **kwargs: Any) -> None:
@@ -140,7 +139,6 @@ async def exece_Terms(app:app, msg:Message) -> Optional[str]:
         el_str = "1s"
     if not el_str or el_str is None:
         el_str = "0.1s"
-
     out = out_code.getvalue()
     # Sᴛʀɪᴘ ᴏɴʟʏ ONE ғɪɴᴀʟ ɴᴇᴡʟɪɴᴇ ᴛᴏ ᴄᴏᴍᴘᴇɴsᴀᴛᴇ ғᴏʀ ᴏᴜʀ ᴍᴇssᴀɢᴇ ғᴏʀᴍᴀᴛᴛɪɴɢ
     if out.endswith("\n"):
@@ -161,8 +159,7 @@ async def exece_Terms(app:app, msg:Message) -> Optional[str]:
             )
         await message.delete()
     return
-
-
+    
 async def aexec(code, app, msg):
     exec(
         "async def __aexec(app, msg): "
