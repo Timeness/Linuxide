@@ -12,16 +12,17 @@ import traceback
 import contextlib
 import cloudscraper
 from time import time
+from Graph import mongo
 from pyrogram import filters
 from Linux import App as app
 from Graph.http import fetch
 from bs4 import BeautifulSoup
-from pyrogram.types import Message
 from inspect import getfullargspec
 from pyrogram.enums import ParseMode
 from typing import Optional, Tuple, Any 
 from pyrogram.errors import MessageTooLong
-from Graph.eval_Helper import format_exception, meval
+from Graph.eval_Helper import format_exception, myEval
+from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
 
 var = {}
 teskode = {}
@@ -31,17 +32,17 @@ def readable_Time(seconds: int) -> str:
     (days, remainder) = divmod(seconds, 86400)
     days = int(days)
     if days != 0:
-        result += f"{days}ᴅ "
+        result += f"{days}ᴅ:"
     (hours, remainder) = divmod(remainder, 3600)
     hours = int(hours)
     if hours != 0:
-        result += f"{hours}ʜ "
+        result += f"{hours}ʜ:"
     (minutes, seconds) = divmod(remainder, 60)
     minutes = int(minutes)
     if minutes != 0:
-        result += f"{minutes}ᴍ "
+        result += f"{minutes}ᴍ:"
     seconds = int(seconds)
-    result += f"{seconds}s "
+    result += f"{seconds}s"
     return result
 
 async def eos_Send(msg, **kwargs):
@@ -62,7 +63,8 @@ async def exece_Terms(app:app, msg:Message) -> Optional[str]:
     reply_by = msg
     if msg.reply_to_message:
         reply_by = msg.reply_to_message
-
+    sticker = reply_by.sticker.file_id if hasattr(reply_by, 'sticker') and reply_by.sticker else None
+    user = reply_by.from_user if hasattr(reply_by, 'from_user') and reply_by.from_user else reply_by
     async def _eval() -> Tuple[str, Optional[str]]:
         async def send(*args: Any, **kwargs: Any) -> Message:
             return await msg.reply(*args, **kwargs)
@@ -82,10 +84,17 @@ async def exece_Terms(app:app, msg:Message) -> Optional[str]:
             "app": app,
             "humantime": human,
             "msg": msg,
+            "m": msg,
+            "db": mongo,
             "var": var,
             "teskode": teskode,
             "re": re,
             "os": os,
+            "user": user,
+            "sticker": sticker,
+            "ParseMode": ParseMode,
+            "IKB": InlineKeyboardButton,
+            "IKM": InlineKeyboardMarkup,
             "asyncio": asyncio,
             "cloudscraper": cloudscraper,
             "json": json,
@@ -103,7 +112,7 @@ async def exece_Terms(app:app, msg:Message) -> Optional[str]:
         eval_vars.update(var)
         eval_vars.update(teskode)
         try:
-            return "", await meval(code, globals(), **eval_vars)
+            return "", await myEval(code, globals(), **eval_vars)
         except Exception as eo:
             # Fɪɴᴅ ғɪʀsᴛ ᴛʀᴀᴄᴇʙᴀᴄᴋ ғʀᴀᴍᴇ ɪɴᴠᴏʟᴠɪɴɢ ᴛʜᴇ sɴɪᴘᴘᴇᴛ
             first_snip_idx = -1
