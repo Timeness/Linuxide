@@ -5,7 +5,7 @@ import traceback
 from io import StringIO
 from hydrogram import filters
 from hydrogram.types import Message
-from Linux import Sakura as app, LOGGER
+from Linux import Sakura as app
 from hydrogram.errors import MessageTooLong
   
 async def aexec(code, app, msg, user): 
@@ -23,7 +23,8 @@ async def hydro_Execor(app: app, msg: Message):
     cosc = await msg.reply("**ʀᴜɴɴɪɴɢ...**")
     try: 
         command = msg.text.split(maxsplit=1)[1]
-    except IndexError as ecs: 
+    except IndexError as ecs:
+        print(ecs)
         LOGGER.info(f"» Eʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ : {ecs}")
     reply = msg
     if msg.reply_to_message:
