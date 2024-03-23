@@ -154,7 +154,7 @@ async def exece_Terms(app:app, msg:Message) -> Optional[str]:
                 document=Zeep,
                 caption=f"**ᴇᴠᴀʟ:**\n<pre language='python'>{code}</pre>\n\n**ʀᴇsᴜʟᴛ:**\nᴀᴛᴛᴀᴄʜᴇᴅ ᴅᴏᴄᴜᴍᴇɴᴛ ɪɴ ғɪʟᴇ !",
                 disable_notification=True,
-                thumb="Graph/Pexels.jpg",
+                thumb="Graph/Templates/Pexels.jpg",
                 reply_to_message_id=reply_by.id
             )
         await message.delete()
