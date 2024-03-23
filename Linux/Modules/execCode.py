@@ -50,7 +50,7 @@ async def hydro_Execor(app: app, msg: Message):
         evaon += stdout 
     else: 
         evaon += "Sᴜᴄᴄᴇss" 
-    exec = f"<b>ɪɴᴘᴜᴛ:</b>\n{command}<b>ʀᴇsᴜʟᴛ:</b>\n<pre language='python'>{evaon}</pre>"
+    exec = f"<b>ɪɴᴘᴜᴛ:</b>\n<pre>{command}</pre>\n<b>ʀᴇsᴜʟᴛ:</b>\n<pre language='python'>{evaon}</pre>"
     if len(exec) > 9690000000069696:
         await cosc.edit("**⚠️ ᴏᴜᴛᴘᴜᴛ ᴛᴏᴏ ʟᴏɴɢ...**")
     else:
