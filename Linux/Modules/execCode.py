@@ -4,8 +4,8 @@ import Config
 import traceback
 from io import StringIO
 from hydrogram import filters
-from hydrogram.types import Message
 from Linux import Sakura as app
+from hydrogram.types import Message
 from hydrogram.errors import MessageTooLong
   
 async def aexec(code, app, msg, user): 
@@ -38,7 +38,7 @@ async def hydro_Execor(app: app, msg: Message):
         user = reply.from_user if hasattr(reply, 'from_user') and reply.from_user else reply
         await aexec(command, app, msg, user) 
     except Exception: 
-        exc = traceback.format_exc() 
+        exc = traceback.format_exc()
     stdout = redirected_output.getvalue() 
     stderr = redirected_error.getvalue() 
     sys.stdout = old_stdout 
