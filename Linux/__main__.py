@@ -3,7 +3,7 @@ import asyncio
 import traceback
 from telegram import Update
 from importlib import import_module
-from Linux import LOGGER, Loop, pyApp
+from Linux import Loop, pyApp, LOGGER
 from Linux.Modules import ALL_MODULES
 from telegram.ext import ContextTypes
 from telegram.error import (
