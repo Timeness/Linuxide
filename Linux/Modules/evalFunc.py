@@ -115,7 +115,7 @@ async def exece_Terms(app:app, msg:Message) -> Optional[str]:
             # Rᴇ-ʀᴀɪsᴇ ᴇxᴄᴇᴘᴛɪᴏɴ ɪғ ɪᴛ ᴡᴀsɴ'ᴛ ᴄᴀᴜsᴇᴅ ʙʏ ᴛʜᴇ sɴɪᴘᴘᴇᴛ
             # Rᴇᴛᴜʀɴ ғᴏʀᴍᴀᴛᴛᴇᴅ sᴛʀɪᴘᴘᴇᴅ ᴛʀᴀᴄᴇʙᴀᴄᴋ
             stripped_tb = tb[first_snip_idx:]
-            formatted_tb = format_exception(e, tb=stripped_tb)
+            formatted_tb = format_exception(eo, tb=stripped_tb)
             return "⚠️ ᴇʀʀᴏʀ ᴡʜɪʟᴇ ᴇxᴇᴄᴜᴛɪɴɢ sɴɪᴘᴘᴇᴛ\n\n", formatted_tb
 
     before = time()
