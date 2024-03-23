@@ -14,7 +14,7 @@ from pyrogram import Client, filters
 from asyncio import create_subprocess_shell, subprocess
 from pyrogram.errors import MessageTooLong, EntityBoundsInvalid
 
-# || ᴇxᴇᴄ ᴛᴇʀᴍɪɴᴀʟ sʏsᴛᴇᴍ ғᴜɴᴄᴛɪᴏɴ ʙᴀsᴇᴅ ᴘʏʀᴏɢʀᴀᴍ
+# || Exᴇᴄ ᴛᴇʀᴍɪɴᴀʟ sʏsᴛᴇᴍ ғᴜɴᴄᴛɪᴏɴ ʙᴀsᴇᴅ ᴘʏʀᴏɢʀᴀᴍ
 def ReplyCheck(message: Message):
     reply_id = None
     if message.reply_to_message:
