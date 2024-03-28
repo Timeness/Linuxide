@@ -1,7 +1,7 @@
 motor
 pymongo
 requests
-pyrogram
+pyrofork
 tgcrypto 
 python-dotenv
 cachetools
