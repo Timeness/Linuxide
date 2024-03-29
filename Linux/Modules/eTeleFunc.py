@@ -101,7 +101,7 @@ async def send(message, context, update, codes):
             ousce.name = "TeleTerm.txt"
             await context.bot.send_document(chat_id=update.effective_chat.id, document=ousce)
     else:
-        await update.effective_message.reply_to_message(
+        await update.effective_message.reply_text(
             text=f"<b>ɪɴ:</b>\n<pre>{codes}</pre>\n<b>ᴏᴜᴛ:</b>\n<pre>{message}</pre>",
             parse_mode=ParseMode.HTML
         )
