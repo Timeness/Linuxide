@@ -34,7 +34,7 @@ def namespace_Funcs(Chat, update, context):
 
 async def code_Input(update):
     scode = update.message.text.split(None, 1)
-    if len(code) > 1:
+    if len(scode) > 1:
         code = scode[1]
         return code
     else:
