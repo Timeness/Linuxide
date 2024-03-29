@@ -32,15 +32,19 @@ def namespace_Funcs(Chat, update, context):
         }
     return namespaces[Chat]
 
-def code_Input(update):
-    code = update.message.text.split(None, 1)[1]
-    return code
+async def code_Input(update):
+    scode = update.message.text.split(None, 1)
+    if len(code) > 1:
+        code = scode[1]
+        return code
+    else:
+        await update.message.reply_text("<b>ᴘʟᴇᴀsᴇ ᴘʀᴏᴠɪᴅᴇ sᴏᴍᴇ ᴄᴏᴅᴇ !</b>", parse_mode=ParseMode.HTML)
 
 async def execues_Funcs(update:Update, context:ContextTypes.DEFAULT_TYPE) -> None:
     if update.effective_message.from_user.id not in Config.SUDOERS:
         return
     else:
-        codes = code_Input(update)
+        codes = await code_Input(update)
         await send(await do_Execs(exec, context, update), context, update, codes)
         if os.path.isfile("Graph/Hydro.txt"):
             os.remove("Graph/Hydro.txt")
