@@ -66,7 +66,7 @@ async def do_Execs(func, context, update):
         temp.write(body)
 
     stdout = io.StringIO()
-    to_compile = f'def func():\n{textwrap.indent(body, "  ")}'
+    to_compile = f'async def func():\n{textwrap.indent(body, "  ")}'
     try:
         exec(to_compile, env)
     except Exception as e:
