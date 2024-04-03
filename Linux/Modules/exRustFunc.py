@@ -27,11 +27,10 @@ def namespace_funcs(update, context):
     }
 
 async def code_input(update):
-    if update.message.text:
+    if update.message.text and len(update.message.text.split()) > 1:
         code_parts = update.message.text.split(None, 1)
-        if len(code_parts) > 1:
-            code = code_parts[1]
-            return code
+        code = code_parts[1]
+        return code
     return ""
 
 async def execute_code(update:Update, context:ContextTypes.DEFAULT_TYPE):
@@ -74,7 +73,7 @@ async def execute_code_in_namespace(update, context, code):
         return result
 
 async def send_result(update, context, code, result):
-    if len(result) > 696969:
+    if len(result) > 2000:
         with io.BytesIO(result.encode()) as output:
             output.name = "TeleTerm.txt"
             await context.bot.send_document(chat_id=update.effective_chat.id, document=output)
