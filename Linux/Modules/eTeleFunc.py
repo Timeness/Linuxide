@@ -33,8 +33,9 @@ def namespace_Funcs(Chat, update, context):
     return namespaces[Chat]
 
 async def code_Input(update):
-    code = update.message.text.split(None, 1)
-    return code[1]
+    xode = update.message.text.split(None, 1)
+    code = xode[1]
+    return code
     
 async def execues_Funcs(update:Update, context:ContextTypes.DEFAULT_TYPE) -> None:
     if update.effective_message.from_user.id not in Config.SUDOERS:
