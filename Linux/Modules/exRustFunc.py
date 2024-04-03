@@ -41,8 +41,14 @@ async def execute_code(update:Update, context:ContextTypes.DEFAULT_TYPE):
         result = await execute_code_in_namespace(update, context, code)
         await send_result(update, context, code, result)
 
+def cleanup_code(code):
+    if code.startswith("```") and code.endswith("```"):
+        return "\n".join(code.split("\n")[1:-1])
+    return code.strip("` \n")
+
 async def execute_code_in_namespace(update, context, code):
     env = namespace_funcs(update, context)
+    code = cleanup_code(code)
     stdout = io.StringIO()
     to_compile = f'async def func():\n{textwrap.indent(code, "  ")}'
     try:
@@ -70,7 +76,8 @@ async def execute_code_in_namespace(update, context, code):
                     pass
         else:
             result = f"{value}{func_return}"
-        return result
+        if result:
+            return result
 
 async def send_result(update, context, code, result):
     if len(str(result)) > 696969:
