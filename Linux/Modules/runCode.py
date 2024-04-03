@@ -6,16 +6,16 @@ from Linux import App as app
 from datetime import datetime
 from pyrogram import filters
 from pyrogram.types import Message
-    
-async def aexec(code, msg):
+
+async def aexec(code, app, msg):
     exec(
-        'async def __aexec(msg, app): '
-        + '\n reply = msg.reply_to_message'
-        + '\n chat = msg.chat.id'
-        + '\n send = await app.send_message()'
-        + ''.join(f'\n {s}' for s in code.split('\n'))
+        "async def __aexec(app, msg): "
+        + "\n p = print"
+        + "\n repy= msg.reply_to_message"
+        + "".join(f"\n {l_}" for l_ in code.split("\n"))
     )
-    return await locals()['__aexec'](msg, app)
+    return await locals()["__aexec"](app, msg)
+    
 
 @app.on_message(filters.command("run", Config.PREFIXS) & filters.user(Config.SUDOERS))
 @app.on_edited_message(filters.command("run", Config.PREFIXS) & filters.user(Config.SUDOERS))
@@ -31,7 +31,7 @@ async def runPyro_Funcs(app:app, msg:Message) -> None:
     redr_err = sys.stderr = io.StringIO()
     stdout, stderr, exc = None, None, None
     try:
-        vacue = await aexec(code[1], msg)
+        vacue = await aexec(code[1], app, msg)
     except Exception:
         exc = traceback.format_exc()
     stdout = redr_opu.getvalue()
