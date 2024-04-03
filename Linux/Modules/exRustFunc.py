@@ -73,7 +73,7 @@ async def execute_code_in_namespace(update, context, code):
         return result
 
 async def send_result(update, context, code, result):
-    if len(result) > 2000:
+    if len(str(result)) > 696969:
         with io.BytesIO(result.encode()) as output:
             output.name = "TeleTerm.txt"
             await context.bot.send_document(chat_id=update.effective_chat.id, document=output)
