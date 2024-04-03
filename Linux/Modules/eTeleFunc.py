@@ -33,13 +33,9 @@ def namespace_Funcs(Chat, update, context):
     return namespaces[Chat]
 
 async def code_Input(update):
-    scode = update.message.text.split(None, 1)
-    if len(scode) > 1:
-        code = scode[1]
-        return code
-    else:
-        await update.message.reply_text("<b>ᴘʟᴇᴀsᴇ ᴘʀᴏᴠɪᴅᴇ sᴏᴍᴇ ᴄᴏᴅᴇ !</b>", parse_mode=ParseMode.HTML)
-
+    code = update.message.text.split(None, 1)
+    return code[1]
+    
 async def execues_Funcs(update:Update, context:ContextTypes.DEFAULT_TYPE) -> None:
     if update.effective_message.from_user.id not in Config.SUDOERS:
         return
@@ -55,6 +51,10 @@ def cleanup_Code(code):
     return code.strip("` \n")
 
 async def do_Execs(func, context, update):
+    if not len(update.message.text.split(None, 1)) > 1:
+        await update.message.reply_text("<b>ᴘʟᴇᴀsᴇ ᴘʀᴏᴠɪᴅᴇ sᴏᴍᴇ ᴄᴏᴅᴇ !</b>", parse_mode=ParseMode.HTML)
+        return
+    await code_Input(update)
     content = update.message.text.split(None, 1)[1]
     body = cleanup_Code(content)
     env = namespace_Funcs(update.effective_chat.id, update, context)
