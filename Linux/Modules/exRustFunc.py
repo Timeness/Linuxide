@@ -27,8 +27,12 @@ def namespace_funcs(update, context):
     }
 
 async def code_input(update):
-    code = update.message.text.split(None, 1)[1]
-    return code
+    if update.message.text:
+        code_parts = update.message.text.split(None, 1)
+        if len(code_parts) > 1:
+            code = code_parts[1]
+            return code
+    return ""
 
 async def execute_code(update:Update, context:ContextTypes.DEFAULT_TYPE):
     if update.effective_user.id not in Config.SUDOERS:
