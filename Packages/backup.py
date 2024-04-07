@@ -2,7 +2,7 @@ import os
 import shutil
 import Config
 import asyncio
-from Gram import *
+from Linux import *
 from pyrogram import *
 from pyrogram.types import *
 
