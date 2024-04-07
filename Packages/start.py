@@ -7,7 +7,7 @@ from pyrogram.enums import *
 
 @App.on_message(filters.command("start"))
 async def startFunc(app: App, update: Message):
-    referred = update.text.split('')[1]
+    referred = update.text.split(None, 1)[1]
     user = update.from_user
     chat = update.chat
     if chat.type != ChatType.PRIVATE:
