@@ -4,13 +4,14 @@ from motor.motor_asyncio import AsyncIOMotorClient
 
 MONGO = str(os.getenv("MONGO", "mongodb+srv://imtiazurrehman1122:HAs207933@cluster0.wxy7hze.mongodb.net/?retryWrites=true&w=majority"))
 Mongo = AsyncIOMotorClient(MONGO)
-user = Mongo["Gram"]["user"]
+
+userdb = Mongo["Gram"]["user"]
 
 async def add_user(user_id: int, user_name: str):
     checkdb = await check_user(user_id)
     if checkdb:
         return
-    return await user.insert_one(
+    return await userdb.insert_one(
         {
             "user_id": user_id,
             "user_name": user_name,
@@ -24,18 +25,18 @@ async def add_user(user_id: int, user_name: str):
     )
 
 async def check_user(user_id: int):
-    users = await user.find_one({"user_id" : user_id})
+    users = await userdb.find_one({"user_id" : user_id})
     if not users:
         return False
     return True
 
 async def remove_user(user_id: int):
-    users = await user.find_one({"user_id": user_id})
+    users = await userdb.find_one({"user_id": user_id})
     if users:
-        return await user.delete_one({"user_id": user_id})
+        return await userdb.delete_one({"user_id": user_id})
 
 async def user_data(user_id: int):
-    user = await user.find_one({"user_id" : user_id})
+    user = await userdb.find_one({"user_id" : user_id})
     if not user:
         return
     return user
