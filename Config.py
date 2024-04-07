@@ -1,4 +1,5 @@
 from os import environ as env
+from os import getenv
 
 API_ID = int(env.get("API_ID", "26850449"))
 SUPPORT = int(env.get("SUPPORT", "-1001535967539"))
