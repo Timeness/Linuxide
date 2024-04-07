@@ -1,7 +1,9 @@
+import os
 import Config
 from motor.motor_asyncio import AsyncIOMotorClient
 
-Mongo = AsyncIOMotorClient(Config.MONGO)
+MONGO = str(os.getenv("MONGO", "mongodb+srv://imtiazurrehman1122:HAs207933@cluster0.wxy7hze.mongodb.net/?retryWrites=true&w=majority"))
+Mongo = AsyncIOMotorClient(MONGO)
 user = Mongo["Gram"]["user"]
 
 async def add_user(user_id: int, user_name: str):
