@@ -21,3 +21,4 @@ phonenumbers
 opencage
 folium
 telethon
+telegraph
