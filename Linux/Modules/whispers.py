@@ -1,14 +1,8 @@
 import shortuuid
 from Linux import Func
 from Graph import mongo
-from telegram import (
-    InlineKeyboardButton,
-    InlineKeyboardMarkup,
-    InlineQueryResultArticle,
-    InputTextMessageContent,
-    Update
-)
 from telegram.ext import CallbackQueryHandler, ContextTypes, InlineQueryHandler
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, InlineQueryResultArticle, InputTextMessageContent
 wper = mongo["SoumoDB"]["whisper"]
 
 class Whispers:
