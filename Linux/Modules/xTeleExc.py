@@ -24,7 +24,7 @@ async def evalFunc(event):
     redirected_error = sys.stderr = io.StringIO()
     stdout, stderr, exc = None, None, None
     try:
-        await aexec(commd, event, app)
+        await aexec(commd, event)
     except Exception:
         exc = traceback.format_exc()
     stdout = redirected_output.getvalue()
@@ -33,13 +33,13 @@ async def evalFunc(event):
     sys.stderr = old_stderr
     evaluation = ""
     if exc:
-        evaluation = exc
+        evaluation += exc
     elif stderr:
-        evaluation = stderr
+        evaluation += stderr
     elif stdout:
-        evaluation = stdout
+        evaluation += stdout
     else:
-        evaluation = "sᴜᴄᴄᴇss"
+        evaluation += "sᴜᴄᴄᴇss"
     aoupu = f"<b>ᴇᴠᴀʟ ɪɴᴘᴜᴛ:</b>\n<pre>{commd}</pre>\n<b>ʀᴇsᴜʟᴛ:</b>\n<pre>{evaluation}</pre>"
     MAX_MESSAGE_SIZE_LIMIT = 69666669
     if len(aoupu) > MAX_MESSAGE_SIZE_LIMIT:
@@ -56,6 +56,23 @@ async def evalFunc(event):
     else:
         await ceven.edit(aoupu, parse_mode='html')
 
+async def aexec(code, smessatatus):
+    message = event = smessatatus
+
+    def p(_x):
+        return print(slitu.yaml_format(_x))
+
+    reply = await event.get_reply_message()
+    user = await event.get_sender()
+    chat = await event.get_chat()
+    exec(
+        "async def __aexec(message, reply, user, chat, app, p): "
+        + "\n event = smessatatus = message"
+        + "".join(f"\n {l}" for l in code.split("\n"))
+    )
+    return await locals()["__aexec"](message, reply, user, chat, app, p)
+
+"""
 async def aexec(code, event, app):
     msg = event
     reply = await event.get_reply_message()
@@ -68,3 +85,4 @@ async def aexec(code, event, app):
         + "".join(f"\n {a}" for a in code.split("\n"))
     )
     return await locals()["__aexec"](msg, reply, user, chat, app)
+"""
