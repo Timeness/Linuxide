@@ -57,7 +57,7 @@ async def evalFunc(event):
         await ceven.edit(commd, parse_mode='html')
 
 async def aexec(code, status):
-    message = event = status
+    msg = event = status
     def p(_x):
         return print(slitu.yaml_format(_x))
 
