@@ -16,6 +16,7 @@ shortuuid
 httpx[http2]
 cloudscraper
 pytz
+geopy
 beautifulsoup4
 phonenumbers
 opencage
