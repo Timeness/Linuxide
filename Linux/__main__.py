@@ -9,7 +9,7 @@ from Linux.Modules import ALL_MODULES
 for Modes in ALL_MODULES:
     import_module("Linux.Modules." + Modes)
 
-def pyRun() -> None:
+def pyRunFuncs() -> None:
     print("» Pʏᴛʜᴏɴ ᴛᴇʟᴇɢʀᴀᴍ ʙᴏᴛ ᴄʟɪᴇɴᴛ ʟᴀʏᴇʀ sᴛᴀʀᴛᴇᴅ !")
     pyApp.run_polling(
         timeout=15,
@@ -20,7 +20,7 @@ def pyRun() -> None:
 if __name__ == "__main__":
     try:
         app.start(bot_token=Config.BOT_TOKEN)
-        secPy_Run()
+        pyRunFuncs()
     except KeyboardInterrupt:
         pass
     except Exception:
