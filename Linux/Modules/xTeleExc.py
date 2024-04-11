@@ -24,7 +24,7 @@ async def evalFunc(event):
     redirected_error = sys.stderr = io.StringIO()
     stdout, stderr, exc = None, None, None
     try:
-        await aexec(commd, event)
+        await aexec(commd, event, app)
     except Exception:
         exc = traceback.format_exc()
     stdout = redirected_output.getvalue()
@@ -56,15 +56,15 @@ async def evalFunc(event):
     else:
         await ceven.edit(commd, parse_mode='html')
 
-async def aexec(code, status):
-    msg = event = status
+async def aexec(code, event, app):
+    msg = event
     reply = await event.get_reply_message()
     user = await event.get_sender()
     chat = await event.get_chat()
     exec(
         "async def __aexec(msg, reply, user, chat, app): "
         + "\n p = print"
-        + "\n event = status = msg"
-        + "".join(f"\n {l}" for l in code.split("\n"))
+        + "\n msg = event"
+        + "".join(f"\n {a}" for a in code.split("\n"))
     )
     return await locals()["__aexec"](msg, reply, user, chat, app)
