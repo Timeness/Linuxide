@@ -58,15 +58,13 @@ async def evalFunc(event):
 
 async def aexec(code, status):
     msg = event = status
-    def p(_x):
-        return print(slitu.yaml_format(_x))
-
     reply = await event.get_reply_message()
     user = await event.get_sender()
     chat = await event.get_chat()
     exec(
-        "async def __aexec(msg, reply, user, chat, app, p): "
+        "async def __aexec(msg, reply, user, chat, app): "
+        + "\n p = print"
         + "\n event = status = msg"
         + "".join(f"\n {l}" for l in code.split("\n"))
     )
-    return await locals()["__aexec"](msg, reply, user, chat, app, p)
+    return await locals()["__aexec"](msg, reply, user, chat, app)
