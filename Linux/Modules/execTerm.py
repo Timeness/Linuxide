@@ -14,7 +14,7 @@ from pyrogram import Client, filters
 from asyncio import create_subprocess_shell, subprocess
 from pyrogram.errors import MessageTooLong, EntityBoundsInvalid
 
-# || Exᴇᴄ ᴛᴇʀᴍɪɴᴀʟ sʏsᴛᴇᴍ ғᴜɴᴄᴛɪᴏɴ ʙᴀsᴇᴅ ᴘʏʀᴏɢʀᴀᴍ
+# Exᴇᴄ ᴛᴇʀᴍɪɴᴀʟ sʏsᴛᴇᴍ ғᴜɴᴄᴛɪᴏɴ ʙᴀsᴇᴅ ᴘʏʀᴏɢʀᴀᴍ
 def ReplyCheck(message: Message):
     reply_id = None
     if message.reply_to_message:
@@ -26,7 +26,8 @@ def ReplyCheck(message: Message):
 async def aexec(code, app, msg, sticker, reply, data, chat, user):
     sys.tracebacklimit = 0
     exec( 
-        "async def __aexec(app, msg, sticker, reply, data, chat, user): " 
+        "async def __aexec(app, msg, sticker, reply, data, chat, user): "
+        + "\n p = print"
         + "".join(f"\n {a}" for a in code.split("\n")) 
     ) 
     return await locals()["__aexec"](app, msg, sticker, reply, data, chat, user) 
