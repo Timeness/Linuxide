@@ -3,10 +3,11 @@ import sys
 import Config
 import logging, asyncio, time
 from Graph import Clean_Stage
+from telethon import TelegramClient
 from telegram.ext import Application
 from pyrogram import Client as PyGram
 from hydrogram import Client as HyGram
-from telegram.constants import ParseMode
+from telethon.sessions import MemorySession
 from logging import StreamHandler, basicConfig
 from logging.handlers import RotatingFileHandler
 
@@ -26,7 +27,7 @@ __version__ = (
 )
 
 if os.path.exists("Logs.txt"):
-    with open("Logs.txt", "r+") as aeo:
+    with open("logs.txt", "r+") as aeo:
         aeo.truncate(0)
 
 basicConfig(
@@ -34,7 +35,7 @@ basicConfig(
     format="[%(levelname)s] - [%(asctime)s - %(name)s - %(message)s] -> [%(module)s:%(lineno)d]",
     datefmt="%d-%b-%y %H:%M:%S",
     handlers=[
-        RotatingFileHandler("Logs.txt", mode="w+", maxBytes=50000000, backupCount=10),
+        RotatingFileHandler("logs.txt", mode="w+", maxBytes=50000000, backupCount=10),
         StreamHandler()
     ]
 )
@@ -46,11 +47,9 @@ logging.getLogger("hydrogram").setLevel(logging.WARNING)
 if not Config.API_ID:
     LOGGER.warning("» Wᴀʀɴɪɴɢ: ᴀᴘɪ_ɪᴅ ɴᴏᴛ ғᴏᴜɴᴅ ɪɴ ᴄᴏɴғɪɢ ғɪʟᴇs sʜᴜᴛᴅᴏᴡɴ ʙᴏᴛ !")
     sys.exit()
-    
 elif not Config.API_HASH:
     LOGGER.warning("» Wᴀʀɴɪɴɢ: ᴀᴘɪ_ʜᴀsʜ ɴᴏᴛ ғᴏᴜɴᴅ ɪɴ ᴄᴏɴғɪɢ ғɪʟᴇs sʜᴜᴛᴅᴏᴡɴ ʙᴏᴛ !")
     sys.exit()
-    
 elif not Config.BOT_TOKEN:
     LOGGER.warning("» Wᴀʀɴɪɴɢ: ʙᴏᴛ_ᴛᴏᴋᴇɴ ɴᴏᴛ ғᴏᴜɴᴅ ɪɴ ᴄᴏɴғɪɢ ғɪʟᴇs sʜᴜᴛᴅᴏᴡɴ ʙᴏᴛ !")
     sys.exit()
@@ -76,6 +75,12 @@ class Hydro():
         in_memory=True
     )
 Sakura = Hydro.Soumo
+
+app = TelegramClient(
+    MemorySession(),
+    Config.API_ID,
+    Config.API_HASH
+)
 
 async def addPackages():
     await App.start()
