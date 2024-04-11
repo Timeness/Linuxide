@@ -72,7 +72,7 @@ async def exece_Terms(app:app, msg:Message) -> Optional[str]:
         # ᴡᴇ ᴅᴏɴ'ᴛ ᴏᴠᴇʀʀɪᴅᴇ sʏs.sᴛᴅᴏᴜᴛ ᴛᴏ ᴀᴠᴏɪᴅ ɪɴᴛᴇʀғᴇʀɪɴɢ ᴡɪᴛʜ ᴏᴛʜᴇʀ ᴏᴜᴛᴘᴜᴛ
         def _print(*args: Any, **kwargs: Any) -> None:
             if "file" not in kwargs:
-                kwargs["file"] = out_buf
+                kwargs["file"] = out
             return print(*args, **kwargs)
 
         def _help(*args: Any, **kwargs: Any) -> None:
