@@ -5,7 +5,6 @@ from Linux import Sakura
 from Config import SUDOERS
 from pyrogram import filters
 from phonenumbers import carrier
-from phonenumbers import geocoder
 from pyrogram.types import Message
 from opencage.geocoder import OpenCageGeocode
 
@@ -18,7 +17,7 @@ async def track_Location(app:Sakura, message:Message) -> None:
     phone_number = str(message.command[1])
     
     parsed_number = phonenumbers.parse(phone_number)
-    location = geocoder.description_for_number(parsed_number, "en")
+    location = phonenumbers.geocoder.description_for_number(parsed_number, "en")
     update = f"**Lᴏᴄᴀᴛɪᴏɴ :** {location}"
     service_provider = carrier.name_for_number(parsed_number, "en")
     update += f"**Sᴇʀᴠɪᴄᴇ Pʀᴏᴠɪᴅᴇʀ :** {service_provider}"
