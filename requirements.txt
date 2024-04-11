@@ -15,6 +15,9 @@ telegraph
 shortuuid
 httpx[http2]
 cloudscraper
-aiofiles
 pytz
 beautifulsoup4
+phonenumbers
+opencage
+folium
+telethon
