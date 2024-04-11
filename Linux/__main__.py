@@ -2,71 +2,33 @@ import Config
 import asyncio
 import traceback
 from telegram import Update
+from Linux import Loop, pyApp, app
 from importlib import import_module
-from Linux import Loop, pyApp
 from Linux.Modules import ALL_MODULES
-from telegram.ext import ContextTypes
-from telegram.error import (
-    BadRequest, ChatMigrated, Forbidden, NetworkError, TelegramError, TimedOut
-)
 
-# Iᴍᴘᴏᴀʀᴛᴀʙʟᴇ ᴍᴏᴅᴜʟᴇs ғᴜɴᴄᴛɪᴏɴ...
 for Modes in ALL_MODULES:
     import_module("Linux.Modules." + Modes)
-#LOGGER.info("Sᴜᴄᴄᴇssғᴜʟʟʏ Lᴏᴀᴅᴇᴅ Mᴏᴅᴜʟᴇs :" + str(Modes))
 
-async def error_SysFunc(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    error = context.error
-    try:
-        raise error
-    except Forbidden:
-        pass
-        #LOGGER.info("» Nᴏɴᴇ ! Cᴜʀʀᴇɴᴛ Tᴇsᴛ Oɴɢᴏɪɴɢ ᴠ1.")
-        #LOGGER.info(error)
-        # ʀᴇᴍᴏᴠᴇ ᴜᴘᴅᴀᴛᴇ.ᴄʜᴀᴛ_ɪᴅ ғʀᴏᴍ ᴄᴏɴᴠᴇʀsᴀᴛɪᴏɴ ʟɪsᴛ
-    except BadRequest:
-        pass
-        #LOGGER.info("» Nᴏɴᴇ ! Cᴜʀʀᴇɴᴛ Tᴇsᴛ Oɴɢᴏɪɴɢ ᴠ2.")
-        #LOGGER.info("» Bᴀᴅʀᴇǫᴜᴇsᴛ Cᴀᴜɢʜᴛ !")
-        #LOGGER.info(error)
-        # ʜᴀɴᴅʟᴇ ᴍᴀʟғᴏʀᴍᴇᴅ ʀᴇǫᴜᴇsᴛs - ʀᴇᴀᴅ ᴍᴏʀᴇ ʙᴇʟᴏᴡ !
-    except TimedOut:
-        pass
-        #LOGGER.info("» Nᴏɴᴇ ! Cᴜʀʀᴇɴᴛ Tᴇsᴛ Oɴɢᴏɪɴɢ ᴠ3.")
-        # ʜᴀɴᴅʟᴇ sʟᴏᴡ ᴄᴏɴɴᴇᴄᴛɪᴏɴ ᴘʀᴏʙʟᴇᴍs
-    except NetworkError:
-        pass
-        #LOGGER.info("» Nᴏɴᴇ ! Cᴜʀʀᴇɴᴛ Tᴇsᴛ Oɴɢᴏɪɴɢ ᴠ4.")
-        # ʜᴀɴᴅʟᴇ ᴏᴛʜᴇʀ ᴄᴏɴɴᴇᴄᴛɪᴏɴ ᴘʀᴏʙʟᴇᴍs
-    except ChatMigrated as eorr:
-        pass
-        #LOGGER.info("» Nᴏɴᴇ ! Cᴜʀʀᴇɴᴛ Tᴇsᴛ Oɴɢᴏɪɴɢ ᴠ5.")
-        #LOGGER.info(eorr)
-        # ᴛʜᴇ ᴄʜᴀᴛ_ɪᴅ ᴏғ ᴀ ɢʀᴏᴜᴘ ʜᴀs ᴄʜᴀɴɢᴇᴅ ᴜsᴇ ᴇ.ɴᴇᴡ_ᴄʜᴀᴛ_ɪᴅ ɪɴsᴛᴇᴀᴅ
-    except TelegramError:
-        pass
-        #LOGGER.info(error)
-        # ʜᴀɴᴅʟᴇ ᴀʟʟ ᴏᴛʜᴇʀ ᴛᴇʟᴇɢʀᴀᴍ ʀᴇʟᴀᴛᴇᴅ ᴇʀʀᴏʀs
-
-def secPy_Run() -> None:
-    #LOGGER.info("» Pʏᴛʜᴏɴ ᴛᴇʟᴇɢʀᴀᴍ ʙᴏᴛ ᴄʟɪᴇɴᴛ ʟᴀʏᴇʀ sᴛᴀʀᴛᴇᴅ !")
-    pyApp.add_error_handler(error_SysFunc)
-    pyApp.run_polling(timeout=15, drop_pending_updates=True, allowed_updates=Update.MESSAGE)
+def pyRun() -> None:
+    print("» Pʏᴛʜᴏɴ ᴛᴇʟᴇɢʀᴀᴍ ʙᴏᴛ ᴄʟɪᴇɴᴛ ʟᴀʏᴇʀ sᴛᴀʀᴛᴇᴅ !")
+    pyApp.run_polling(
+        timeout=15,
+        drop_pending_updates=True,
+        allowed_updates=Update.MESSAGE
+    )
 
 if __name__ == "__main__":
     try:
+        app.start(bot_token=Config.BOT_TOKEN)
         secPy_Run()
-        #LOGGER.info("Lɪɴᴜxɪᴅᴇ Sᴛᴀʀᴛᴇᴅ As Pʏᴛʜᴏɴ Tᴇʟᴇɢʀᴀᴍ Bᴏᴛ Vᴇʀsɪᴏɴ !")
     except KeyboardInterrupt:
         pass
     except Exception:
-        eocs = traceback.format_exc()
-        print(eocs)
-        #LOGGER.info(f"Eʀʀᴏʀ Oᴄᴄᴜʀʀᴇᴅ : {eocs}")
+        errors = traceback.format_exc()
+        print(errors)
     finally:
         try:
             if Loop.is_running():
                 Loop.stop()
         finally:
             Loop.close()
-        #LOGGER.info("------------------------ Lɪɴᴜxɪᴅᴇ Sᴛᴏᴘᴘᴇᴅ Sᴇʀᴠɪᴄᴇs ------------------------")
