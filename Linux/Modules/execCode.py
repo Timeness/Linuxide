@@ -10,7 +10,8 @@ from hydrogram.errors import MessageTooLong
   
 async def aexec(code, app, msg, user): 
     exec( 
-        "async def __aexec(app, msg, user): " 
+        "async def __aexec(app, msg, user): "
+        + "\n p = print"
         + "".join(f"\n {a}" for a in code.split("\n")) 
     ) 
     return await locals()["__aexec"](app, msg, user) 
