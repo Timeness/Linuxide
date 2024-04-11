@@ -54,7 +54,7 @@ async def evalFunc(event):
                 parse_mode='html'
             )
     else:
-        await ceven.edit(commd, parse_mode='html')
+        await ceven.edit(aoupu, parse_mode='html')
 
 async def aexec(code, event, app):
     msg = event
