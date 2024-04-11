@@ -56,33 +56,15 @@ async def evalFunc(event):
     else:
         await ceven.edit(aoupu, parse_mode='html')
 
-async def aexec(code, smessatatus):
-    message = event = smessatatus
-
-    def p(_x):
-        return print(slitu.yaml_format(_x))
-
-    reply = await event.get_reply_message()
-    user = await event.get_sender()
-    chat = await event.get_chat()
-    exec(
-        "async def __aexec(message, reply, user, chat, app, p): "
-        + "\n event = smessatatus = message"
-        + "".join(f"\n {l}" for l in code.split("\n"))
-    )
-    return await locals()["__aexec"](message, reply, user, chat, app, p)
-
-"""
-async def aexec(code, event, app):
-    msg = event
+async def aexec(code, mesatatus):
+    msg = event = mesatatus
     reply = await event.get_reply_message()
     user = await event.get_sender()
     chat = await event.get_chat()
     exec(
         "async def __aexec(msg, reply, user, chat, app): "
         + "\n p = print"
-        + "\n msg = event"
-        + "".join(f"\n {a}" for a in code.split("\n"))
+        + "\n event = mesatatus = msg"
+        + "".join(f"\n {l}" for l in code.split("\n"))
     )
     return await locals()["__aexec"](msg, reply, user, chat, app)
-"""
