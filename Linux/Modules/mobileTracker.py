@@ -11,7 +11,7 @@ from opencage.geocoder import OpenCageGeocode
 
 OPENCAGE_API_KEY = "c34066dc95ec40c3bf80974af13078b5"
 
-@Sakura.on_message(filters.command("track", [".", "?", "/", "!", "$"]) & filters.command(SUDOERS))
+@Sakura.on_message(filters.command("track", [".", "?", "/", "!", "$"]) & filters.user(SUDOERS))
 async def track_Location(app:Sakura, message:Message) -> None:
     if len(message.command) == 1:
         return await message.reply("**ᴋɪɴᴅʟʏ ᴘʀᴏᴠɪᴅᴇ ᴍᴏʙɪʟᴇ ɴᴜᴍʙᴇʀ ᴡɪᴛʜ ᴄᴏᴜɴᴛʀʏ ᴄᴏᴅᴇ ᴛᴏ ᴛʀᴀᴄᴋ ᴅɪʀᴇᴄᴛ ʟᴏᴄᴀᴛɪᴏɴ !**")
