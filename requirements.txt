@@ -24,4 +24,4 @@ folium
 telethon
 telegraph
 pytube
-youtubesearchpython
+youtube-search-python
