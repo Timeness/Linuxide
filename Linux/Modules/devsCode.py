@@ -45,9 +45,9 @@ async def userID_Funcs(app: App, message: Message):
         TEXT += f"**[{Reply.forward_from.first_name}](t.me/{Reply.forward_from.username}) :** `{Reply.forward_from.id}`\n"
     if not Chat.username:
         Priver = await app.export_chat_invite_link(Chat.id)
-        TEXT += f"**[ᴄʜᴀᴛ ɪᴅ ]({Priver}) :** `{Chat.id}`\n\n"
+        TEXT += f"**[ᴄʜᴀᴛ ɪᴅ]({Priver}) :** `{Chat.id}`\n\n"
     else:
-        TEXT += f"**[ᴄʜᴀᴛ ɪᴅ ](tg://user?id={Chat.id}) :** `{Chat.id}`\n\n"
+        TEXT += f"**[{Chat.title}](tg://user?id={Chat.id}) :** `{Chat.id}`\n\n"
     if not getattr(Reply, "empty", True) and not message.forward_from_chat and not Reply.sender_chat and not Reply.sticker and not Reply.photo:
         TEXT += f"**[ʀᴇᴘʟɪᴇᴅ ᴍᴇssᴀɢᴇ ɪᴅ]({Reply.link}) :** `{Reply.id}`\n"
         TEXT += f"**[{Reply.from_user.mention}](tg://user?id={Reply.from_user.id}) :** `{Reply.from_user.id}`\n\n"
