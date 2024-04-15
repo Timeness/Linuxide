@@ -42,7 +42,7 @@ async def userID_Funcs(app: App, message: Message):
             else:
                 return await message.reply("**⚠️ ᴄᴏᴜʟᴅ ɴᴏᴛ ғɪɴᴅ ᴀ ᴜsᴇʀ ᴀʀᴇ ʏᴏᴜ sᴜʀᴇ ɪ'ᴠᴇ sᴇᴇɴ ᴛʜᴇᴍ ʙᴇғᴏʀᴇ ?**")
     if Reply and Reply.forward_from:
-        TEXT += f"**[{Reply.forward_from.first_name}](t.me/{Reply.forward_from.username}) :** `{Reply.forward_from.id}`\n"
+        TEXT += f"**[{Reply.forward_from.first_name}](telegram.me/{Reply.forward_from.username}) :** `{Reply.forward_from.id}`\n"
     if not Chat.username:
         Priver = await app.export_chat_invite_link(Chat.id)
         TEXT += f"**[ᴄʜᴀᴛ ɪᴅ]({Priver}) :** `{Chat.id}`\n\n"
@@ -52,11 +52,19 @@ async def userID_Funcs(app: App, message: Message):
         TEXT += f"**[ʀᴇᴘʟɪᴇᴅ ᴍᴇssᴀɢᴇ ɪᴅ]({Reply.link}) :** `{Reply.id}`\n"
         TEXT += f"**[{Reply.from_user.mention}](tg://user?id={Reply.from_user.id}) :** `{Reply.from_user.id}`\n\n"
     if Reply and Reply.sticker:
+        TEXT += f"**[ʀᴇᴘʟɪᴇᴅ ᴍᴇssᴀɢᴇ ɪᴅ]({Reply.link}) :** `{Reply.id}`\n"
+        TEXT += f"**[{Reply.from_user.mention}](tg://user?id={Reply.from_user.id}) :** `{Reply.from_user.id}`\n"
         TEXT += f"**[ʀᴇᴘʟʏ sᴛɪᴄᴋᴇʀ ɪᴅ]({Reply.link}) :** `{Reply.sticker.file_id}`\n\n"
     if Reply and Reply.photo:
+        TEXT += f"**[ʀᴇᴘʟɪᴇᴅ ᴍᴇssᴀɢᴇ ɪᴅ]({Reply.link}) :** `{Reply.id}`\n"
+        TEXT += f"**[{Reply.from_user.mention}](tg://user?id={Reply.from_user.id}) :** `{Reply.from_user.id}`\n"
         TEXT += f"**[ᴘʜᴏᴛᴏ ғɪʟᴇ ɪᴅ]({Reply.link}) :** `{Reply.photo.file_id}`\n\n"
     if Reply and Reply.forward_from_chat:
+        TEXT += f"**[ʀᴇᴘʟɪᴇᴅ ᴍᴇssᴀɢᴇ ɪᴅ]({Reply.link}) :** `{Reply.id}`\n"
+        TEXT += f"**[{Reply.from_user.mention}](tg://user?id={Reply.from_user.id}) :** `{Reply.from_user.id}`\n"
         TEXT += f"**ғᴏʀᴡᴀʀᴅᴇᴅ ᴄʜᴀɴɴᴇʟ ɪs [{Reply.forward_from_chat.title}](tg://user?id={Reply.forward_from_chat.id}) ʜᴀs ᴀɴ ɪᴅ :** `{Reply.forward_from_chat.id}`\n\n"        
     if Reply and Reply.sender_chat:
+        TEXT += f"**[ʀᴇᴘʟɪᴇᴅ ᴍᴇssᴀɢᴇ ɪᴅ]({Reply.link}) :** `{Reply.id}`\n"
+        TEXT += f"**[{Reply.from_user.mention}](tg://user?id={Reply.from_user.id}) :** `{Reply.from_user.id}`\n"
         TEXT += f"**ʀᴇᴘʟɪᴇᴅ ᴄʜᴀᴛ/ᴄʜᴀɴɴᴇʟ ɪs [{Reply.sender_chat.title}](tg://user?id={Reply.sender_chat.id}) ʜᴀs ᴀɴ ɪᴅ :** `{Reply.sender_chat.id}`"
     await app.send_photo(Chat.id, photo=Config.GIST_IMAGE, caption=TEXT)
