@@ -18,7 +18,7 @@ async def Markdown(app, Maker):
         return str(Status)
 
 WELCOME_CAPTION = """
-**ʜᴇʏ {} [{}] ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴛʜᴇ {} !**
+**ʜᴇʏ {} ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴛʜᴇ {} !**
 
 » **ᴜsᴇʀ ɪɴғᴏʀᴍᴀᴛɪᴏɴ :**
 ━━━━━━━━━━━━━━━━━━━━━
@@ -70,7 +70,7 @@ async def _greetings(client, message):
         username = f"@{user.username}" if user.username else "ɴᴏɴᴇ"
         today = str(dt()[0])
         welcome_caption = WELCOME_CAPTION.format(
-            user.mention, user.id, chat_mention, user.first_name, username, user.id,  members_count, today
+            user.mention, chat_mention, user.first_name, username, user.id,  members_count, today
         )
         msg = await client.send_photo(
             chat_id=message.chat.id,
