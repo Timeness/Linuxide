@@ -1,4 +1,5 @@
 motor
+pillow
 pymongo
 requests
 pyrofork
