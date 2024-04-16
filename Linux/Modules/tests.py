@@ -1,6 +1,21 @@
 from PIL import Image, ImageOps, ImageDraw, ImageChops, ImageFont
 from hydrogram import filters
 from Linux import Sakura
+import asyncio
+
+async def Markdown(app, Maker):
+    if str(Maker).startswith("-100"):
+        Chat = await app.get_chat(Maker)
+        if Chat.username:
+            Status = f"[{Chat.title}]({Chat.username})"
+            return str(Status)
+        else:
+            Link = await app.export_chat_invite_link(Maker)
+            Status = f"[{Chat.title}]({Link})"
+            return str(Status)
+    else:
+        Status = (await app.get_chat(Maker)).mention
+        return str(Status)
 
 WELCOME_CAPTION = """
 **ʜᴇʏ {} [{}] ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴛʜᴇ {} !**
@@ -10,8 +25,15 @@ WELCOME_CAPTION = """
 » **ɴᴀᴍᴇ :** {}
 » **ᴜsᴇʀɴᴀᴍᴇ :** {}
 » **ᴜsᴇʀ ɪᴅ :** `{}`
+» **ᴍᴇᴍʙᴇʀs ᴄᴏᴜɴᴛ :** `{}`
 » **ᴊᴏɪɴɪɴɢ ᴅᴀᴛᴇ :** `{}`
 """
+
+def dt():
+    now = datetime.now()
+    dt_string = now.strftime("%d.%m.%Y %H:%M")
+    dt_list = dt_string.split(" ")
+    return dt_list
 
 async def Circle(pfp, size=(215, 215)):
     pfp = pfp.resize(size, Image.Resampling.LANCZOS).convert("RGBA")
@@ -43,6 +65,18 @@ async def _greetings(client, message):
         except AttributeError:
             photo = None
         photo_path = await userPhoto(photo, user.id)
+        chat_mention = await Markdown(client, message.chat.id)
+        members_count = (await client.get_chat(message.chat.id)).members_count
+        username = f"@{user.username}" if user.username else "ɴᴏɴᴇ"
+        today = str(dt()[0])
         welcome_caption = WELCOME_CAPTION.format(
-            user.mention, user.id, message.chat.title
+            user.mention, user.id, chat_mention, user.first_name, username, user.id,  members_count, today
         )
+        msg = await client.send_photo(
+            chat_id=message.chat.id,
+            photo=photo_path,
+            caption=welcome_caption,
+            disable_web_page_preview=True
+        )
+        await asyncio.sleep(600)
+        await msg.delete()
