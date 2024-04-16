@@ -75,8 +75,7 @@ async def _greetings(client, message):
         msg = await client.send_photo(
             chat_id=message.chat.id,
             photo=photo_path,
-            caption=welcome_caption,
-            disable_web_page_preview=True
+            caption=welcome_caption
         )
         await asyncio.sleep(600)
         await msg.delete()
