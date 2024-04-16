@@ -30,7 +30,7 @@ WELCOME_CAPTION = """
 """
 
 def dt():
-    now = datetime.now()
+    now = datetime.datetime.now()
     dt_string = now.strftime("%d.%m.%Y %H:%M")
     dt_list = dt_string.split(" ")
     return dt_list
