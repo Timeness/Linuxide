@@ -192,7 +192,7 @@ SHORTNER_KEYBOARD = InlineKeyboardMarkup(
     ]
 )
 
-@app.on_message(filters.command("shortner"))
+@Sakura.on_message(filters.command("shortner"))
 async def shorten_weburls(app: Sakura, message: Message) -> None:
     if len(message.command) == 1:
         return await message.reply("ɴᴏ ᴜʀʟ's ғᴏᴜɴᴅ ғᴏʀ sʜᴏʀᴛɴᴇʀ !")
@@ -205,7 +205,7 @@ async def shorten_weburls(app: Sakura, message: Message) -> None:
         reply_markup=SHORTNER_KEYBOARD
     )
 
-@app.on_callback_query()
+@Sakura.on_callback_query()
 async def callback_query(app: Sakura, query: CallbackQuery):
     shorts = query.message.text.split(None, 1)[1]
     user_data = shortner.get(query.from_user.id)
