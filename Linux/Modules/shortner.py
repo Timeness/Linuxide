@@ -198,7 +198,7 @@ async def shorten_weburls(app: Sakura, message: Message) -> None:
         return await message.reply("ɴᴏ ᴜʀʟ's ғᴏᴜɴᴅ ғᴏʀ sʜᴏʀᴛɴᴇʀ !")
     shorts = message.text.split(None, 1)[1]
     user_data = f"shortner_{message.from_user.id}"
-    shortner[message.from_user.id] = user_data
+    shortner[message.from_user.id] = shorts
     await message.reply_photo(
         photo=SHORTNER_PHOTO,
         caption=SHORTNER_TEXT,
@@ -207,11 +207,11 @@ async def shorten_weburls(app: Sakura, message: Message) -> None:
 
 @Sakura.on_callback_query()
 async def callback_query(app: Sakura, query: CallbackQuery):
-    shorts = query.message.text.split(None, 1)[1]
+    #shorts = query.message.text.split(None, 1)[1]
     user_data = shortner.get(query.from_user.id)
     if query.data == "shorte_ner":
         if user_data:
-            get_shorts = shorten_v1(shorts)
+            get_shorts = shorten_v1(user_data)
             if get_shorts:
                 await query.message.edit_caption(f"Sʜᴏʀᴛᴇɴᴇᴅ URL : {get_shorts}")
             else:
@@ -220,7 +220,7 @@ async def callback_query(app: Sakura, query: CallbackQuery):
             await query.answer("ɴᴏᴛ ᴀᴜᴛʜᴏʀɪᴢᴇᴅ !", show_alert=True)
     elif query.data == "vgd_ner":
         if user_data:
-            get_shorts = shorten_v2(shorts)
+            get_shorts = shorten_v2(user_data)
             if get_shorts:
                 await query.message.edit_caption(f"Sʜᴏʀᴛᴇɴᴇᴅ URL : {get_shorts}")
             else:
@@ -229,7 +229,7 @@ async def callback_query(app: Sakura, query: CallbackQuery):
             await query.answer("ɴᴏᴛ ᴀᴜᴛʜᴏʀɪᴢᴇᴅ !", show_alert=True)
     elif query.data == "unu_ner":
         if user_data:
-            get_shorts = shorten_v3(shorts)
+            get_shorts = shorten_v3(user_data)
             if get_shorts:
                 await query.message.edit_caption(f"Sʜᴏʀᴛᴇɴᴇᴅ URL : {get_shorts}")
             else:
@@ -238,7 +238,7 @@ async def callback_query(app: Sakura, query: CallbackQuery):
             await query.answer("ɴᴏᴛ ᴀᴜᴛʜᴏʀɪᴢᴇᴅ !", show_alert=True)
     elif query.data == "cutty_ner":
         if user_data:
-            get_shorts = shorten_v4(shorts)
+            get_shorts = shorten_v4(user_data)
             if get_shorts:
                 await query.message.edit_caption(f"Sʜᴏʀᴛᴇɴᴇᴅ URL : {get_shorts}")
             else:
@@ -247,7 +247,7 @@ async def callback_query(app: Sakura, query: CallbackQuery):
             await query.answer("ɴᴏᴛ ᴀᴜᴛʜᴏʀɪᴢᴇᴅ !", show_alert=True)
     elif query.data == "gitio_ner":
         if user_data:
-            get_shorts = shorten_v5(shorts)
+            get_shorts = shorten_v5(user_data)
             if get_shorts:
                 await query.message.edit_caption(f"Sʜᴏʀᴛᴇɴᴇᴅ URL : {get_shorts}")
             else:
@@ -256,7 +256,7 @@ async def callback_query(app: Sakura, query: CallbackQuery):
             await query.answer("ɴᴏᴛ ᴀᴜᴛʜᴏʀɪᴢᴇᴅ !", show_alert=True)
     elif query.data == "snipli_ner":
         if user_data:
-            get_shorts = shorten_v6(shorts)
+            get_shorts = shorten_v6(user_data)
             if get_shorts:
                 await query.message.edit_caption(f"Sʜᴏʀᴛᴇɴᴇᴅ URL : {get_shorts}")
             else:
@@ -265,7 +265,7 @@ async def callback_query(app: Sakura, query: CallbackQuery):
             await query.answer("ɴᴏᴛ ᴀᴜᴛʜᴏʀɪᴢᴇᴅ !", show_alert=True)
     elif query.data == "tinycc_ner":
         if user_data:
-            get_shorts = shorten_v7(shorts)
+            get_shorts = shorten_v7(user_data)
             if get_shorts:
                 await query.message.edit_caption(f"Sʜᴏʀᴛᴇɴᴇᴅ URL : {get_shorts}")
             else:
@@ -274,7 +274,7 @@ async def callback_query(app: Sakura, query: CallbackQuery):
             await query.answer("ɴᴏᴛ ᴀᴜᴛʜᴏʀɪᴢᴇᴅ !", show_alert=True)
     elif query.data == "clckru_ner":
         if user_data:
-            get_shorts = shorten_v8(shorts)
+            get_shorts = shorten_v8(user_data)
             if get_shorts:
                 await query.message.edit_caption(f"Sʜᴏʀᴛᴇɴᴇᴅ URL : {get_shorts}")
             else:
@@ -283,7 +283,7 @@ async def callback_query(app: Sakura, query: CallbackQuery):
             await query.answer("ɴᴏᴛ ᴀᴜᴛʜᴏʀɪᴢᴇᴅ !", show_alert=True)
     elif query.data == "tinyur_ner":
         if user_data:
-            get_shorts = shorten_v9(shorts)
+            get_shorts = shorten_v9(user_data)
             if get_shorts:
                 await query.message.edit_caption(f"Sʜᴏʀᴛᴇɴᴇᴅ URL : {get_shorts}")
             else:
@@ -292,7 +292,7 @@ async def callback_query(app: Sakura, query: CallbackQuery):
             await query.answer("ɴᴏᴛ ᴀᴜᴛʜᴏʀɪᴢᴇᴅ !", show_alert=True)
     elif query.data == "isgd_ner":
         if user_data:
-            get_shorts = shorten_v10(shorts)
+            get_shorts = shorten_v10(user_data)
             if get_shorts:
                 await query.message.edit_caption(f"Sʜᴏʀᴛᴇɴᴇᴅ URL : {get_shorts}")
             else:
@@ -301,7 +301,7 @@ async def callback_query(app: Sakura, query: CallbackQuery):
             await query.answer("ɴᴏᴛ ᴀᴜᴛʜᴏʀɪᴢᴇᴅ !", show_alert=True)
     elif query.data == "clean_ner":
         if user_data:
-            get_shorts = shorten_v11(shorts)
+            get_shorts = shorten_v11(user_data)
             if get_shorts:
                 await query.message.edit_caption(f"Sʜᴏʀᴛᴇɴᴇᴅ URL : {get_shorts}")
             else:
@@ -310,7 +310,7 @@ async def callback_query(app: Sakura, query: CallbackQuery):
             await query.answer("ɴᴏᴛ ᴀᴜᴛʜᴏʀɪᴢᴇᴅ !", show_alert=True)
     elif query.data == "locxst_ner":
         if user_data:
-            get_shorts = shorten_v12(shorts)
+            get_shorts = shorten_v12(user_data)
             if get_shorts:
                 await query.message.edit_caption(f"Sʜᴏʀᴛᴇɴᴇᴅ URL : {get_shorts}")
             else:
