@@ -4,9 +4,9 @@ from os.path import basename, dirname, isfile
 def __docs_modes():
     mod_pass = glob.glob(dirname(__file__) + "/*.py")
     modes = [
-        basename(f)[:-3]
-        for f in mod_pass
-        if isfile(f) and f.endswith(".py") and not f.endswith("__init__.py")
+        basename(o)[:-3]
+        for o in mod_pass
+        if isfile(o) and o.endswith(".py") and not o.endswith("__init__.py") and not o.endswith("SysCore.py")
     ]
     return modes
 
