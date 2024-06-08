@@ -3,7 +3,7 @@ from pyrogram.types import Message, PreCheckoutQuery
 from pyrogram.handlers import PreCheckoutQueryHandler, MessageHandler
 from pyrogram import Client, idle, filters, types
 from pyrogram.enums import ChatType
-from Linux import app
+from Linux import App as app
 
 async def donateHandler(app:Client, message:Message) -> None:     
     amount = 1
