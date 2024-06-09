@@ -82,7 +82,7 @@ app = TelegramClient(
     Config.API_HASH
 )
 
-app2 = Client(
+app2 = PyGram(
     name="pyUB2",
     api_id=29400566,
     api_hash="8fd30dc496aea7c14cf675f59b74ec6f",
