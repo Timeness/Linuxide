@@ -6,6 +6,7 @@ import traceback
 from datetime import datetime
 from pyrogram import filters, Client
 from pyrogram.types import Message
+from Linux.Modules.runCode import aexec
 
 app2 = Client(
     name="pyUB2",
@@ -16,19 +17,9 @@ app2 = Client(
     plugins=dict(root="Linux")
 )
 
-async def aexec(code, app, msg):
-    exec(
-        "async def aexec(app, msg): "
-        + "\n p = print"
-        + "\n repy= msg.reply_to_message"
-        + "".join(f"\n {l_}" for l_ in code.split("\n"))
-    )
-    return await locals()"__aexec"
-    
-
 @app2.on_message(filters.command("p2", Config.PREFIXS))
 @app2.on_edited_message(filters.command("p2", Config.PREFIXS))
-async def runPyro_Funcs(app:app, msg:Message) -> None:
+async def runPyro_Funcs(app:app2, msg:Message) -> None:
     code = msg.text.split(None, 1)
     if len(code) == 1:
         return await msg.reply(" ᴄᴏᴅᴇ ɴᴏᴛ ғᴏᴜɴᴅ !")
