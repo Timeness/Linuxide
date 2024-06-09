@@ -14,7 +14,7 @@ import cloudscraper
 from time import time
 from Graph import mongo
 from pyrogram import filters
-from Linux import App as app
+from Linux import App as app, app2
 from bs4 import BeautifulSoup
 from inspect import getfullargspec
 from pyrogram.enums import ParseMode
@@ -49,7 +49,8 @@ async def eos_Send(msg, **kwargs):
     func = msg.edit if msg.from_user.is_self else msg.reply
     spec = getfullargspec(func.__wrapped__).args
     await func(**{k: v for k, v in kwargs.items() if k in spec})
-
+@app2.on_message((filters.command("ex2", Config.PREFIXS) | filters.regex(r"app.run\(\)$")) & filters.user(Config.SUDOERS))
+@app2.on_edited_message((filters.command("ex2", Config.PREFIXS) | filters.regex(r"app.run\(\)$")) & filters.user(Config.SUDOERS))
 @app.on_message((filters.command("ex", Config.PREFIXS) | filters.regex(r"app.run\(\)$")) & filters.user(Config.SUDOERS))
 @app.on_edited_message((filters.command("ex", Config.PREFIXS) | filters.regex(r"app.run\(\)$")) & filters.user(Config.SUDOERS))
 async def exece_Terms(app:app, msg:Message) -> Optional[str]:
