@@ -82,8 +82,18 @@ app = TelegramClient(
     Config.API_HASH
 )
 
+app2 = Client(
+    name="pyUB2",
+    api_id=29400566,
+    api_hash="8fd30dc496aea7c14cf675f59b74ec6f",
+    in_memory=True,
+    session_string="BQHAnfYApkwzbO2p_7lfkmzMnQZO56_H3jQSSdrGeqEexnjM5NKHA67RcR_FCxFpKh3-ekqnuUQbZb5_0mY4YFyL_4nwZ6kVC0RGvpJuqE2LS42O_z4myav28IELCdXuxSdbom9-ZkqGzbh2idDD8IqgSiX6M29a9ToXSbyKPozQOTlO62d95pJ6oLOBGYQhWo1vL2x4fRP511rQu0_dxB9T2a1TUyDb8BFMUAYeY4XFbBa5vMhYypSZBNlFTCt6_35K9w7n8PkNFb7snAEafG8vnT_QVSGIEQPYkHqiSVexy4HKUYkcEmbAk5Txhf4h3L8HG4y2PsoriENBkYW5zpwyKppyDQAAAAGDvCC_AA",
+    plugins=dict(root="Linux")
+)
+
 async def addPackages():
     await App.start()
+    await app2.start()
     await Sakura.start()
     try:
         Resocs = await Clean_Stage()
