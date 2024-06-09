@@ -93,7 +93,6 @@ app2 = PyGram(
 
 async def addPackages():
     await App.start()
-    await app2.start()
     await Sakura.start()
     try:
         Resocs = await Clean_Stage()
