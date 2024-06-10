@@ -2,7 +2,7 @@ import Config
 import asyncio
 import traceback
 from telegram import Update
-from Linux import Loop, pyApp, app, app2
+from Linux import Loop, pyApp, app
 from importlib import import_module
 from Linux.Modules import ALL_MODULES
 
@@ -21,7 +21,6 @@ if __name__ == "__main__":
     try:
         app.start(bot_token=Config.BOT_TOKEN)
         pyRunFuncs()
-        app2.run()
     except KeyboardInterrupt:
         pass
     except Exception:
