@@ -111,10 +111,10 @@ async def addPackages():
 
 pyApp = Application.builder().token(Config.BOT_TOKEN).build()
 Func = pyApp.add_handler
+app2Task = Loop.create_task(pyroUser())
 Loop.run_until_complete(
-    asyncio.gather(pyApp.bot.initialize(), addPackages())
+    asyncio.gather(pyApp.bot.initialize(), app2Task, addPackages())
 )
-asyncio.create_task(pyroUser())
 LOGGER.info("[INFO]: Gᴇᴛᴛɪɴɢ Bᴏᴛ Iɴғᴏʀᴍᴀᴛɪᴏɴs...")
 BOT_ID = pyApp.bot.id
 BOT_NAME = pyApp.bot.first_name
