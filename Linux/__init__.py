@@ -90,7 +90,9 @@ app2 = PyGram(
     session_string="BQHAnfYApkwzbO2p_7lfkmzMnQZO56_H3jQSSdrGeqEexnjM5NKHA67RcR_FCxFpKh3-ekqnuUQbZb5_0mY4YFyL_4nwZ6kVC0RGvpJuqE2LS42O_z4myav28IELCdXuxSdbom9-ZkqGzbh2idDD8IqgSiX6M29a9ToXSbyKPozQOTlO62d95pJ6oLOBGYQhWo1vL2x4fRP511rQu0_dxB9T2a1TUyDb8BFMUAYeY4XFbBa5vMhYypSZBNlFTCt6_35K9w7n8PkNFb7snAEafG8vnT_QVSGIEQPYkHqiSVexy4HKUYkcEmbAk5Txhf4h3L8HG4y2PsoriENBkYW5zpwyKppyDQAAAAGDvCC_AA",
     plugins=dict(root="Linux")
 )
-
+async def pyroUser():
+    await app2.start()
+    
 async def addPackages():
     await App.start()
     await Sakura.start()
@@ -112,7 +114,7 @@ Func = pyApp.add_handler
 Loop.run_until_complete(
     asyncio.gather(pyApp.bot.initialize(), addPackages())
 )
-
+asyncio.create_task(pyroUser())
 LOGGER.info("[INFO]: Gᴇᴛᴛɪɴɢ Bᴏᴛ Iɴғᴏʀᴍᴀᴛɪᴏɴs...")
 BOT_ID = pyApp.bot.id
 BOT_NAME = pyApp.bot.first_name
