@@ -2,9 +2,9 @@ from Graph.WebScrap import *
 
 "mongodb+srv://nandhaxd:rw5T7YJRjsE3fmk3@cluster0.80igexg.mongodb.net/?retryWrites=true&w=majority"
 
-
-MONGO_URI = ("mongodb+srv://MrsMayura:Mayura6969@cluster0.5gpauan.mongodb.net/?retryWrites=true&w=majority")
-MOTOR_URI = ("mongodb+srv://RiasGremory:Rias6969@cluster0.37ripjq.mongodb.net/?retryWrites=true&w=majority")
+SCALADB = "mongodb+srv://MayuraSan:MayuraSan@cluster0.cconah4.mongodb.net/?retryWrites=true&w=majority"
+MONGO_URI = "mongodb://localhost:27017/" # ("mongodb+srv://MrsMayura:Mayura6969@cluster0.5gpauan.mongodb.net/?retryWrites=true&w=majority")
+MOTOR_URI = "mongodb://localhost:27017/"
 from os import execvp
 #from Linux import LOGGER
 from sys import executable
