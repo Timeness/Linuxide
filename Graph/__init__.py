@@ -14,24 +14,8 @@ from pymongo.errors import InvalidURI
 from pymongo.errors import PyMongoError
 from motor.motor_asyncio import AsyncIOMotorClient as MongoDB
 
-try:
-    db = MongoDB(MOTOR_URI)
-except InvalidURI:
-    pass #LOGGER.info("» Iɴᴠᴀʟɪᴅ ᴍᴏɴɢᴏ ᴜʀɪ ᴏʀ ɪᴛs ᴇxᴘɪʀᴇᴅ !")
-except Exception as eos:
-    pass #LOGGER.info(f"» Mᴏɴɢᴏ ᴍᴏᴛᴏʀ ᴄʟɪᴇɴᴛ ᴇʀʀᴏʀ : {eos}")
-except PyMongoError:
-    pass
-
-try:
-    mongo = MongoClient(MONGO_URI)
-except InvalidURI:
-    pass #LOGGER.info("» Iɴᴠᴀʟɪᴅ ᴍᴏɴɢᴏ ᴜʀɪ ᴏʀ ɪᴛs ᴇxᴘɪʀᴇᴅ !")
-except Exception as eoc:
-    pass #LOGGER.info(f"» Mᴏɴɢᴏ ᴄʟɪᴇɴᴛ ᴇʀʀᴏʀ : {eoc}")
-except PyMongoError:
-   pass
-
+db = MongoDB(MOTOR_URI)
+mongo = MongoClient(MONGO_URI)
 Rose = db["Soumo"]["Rose"]
 usersdb = mongo["SoumoDB"]["users"]
 groupdb = mongo["SoumoDB"]["group"]
